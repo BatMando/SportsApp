@@ -7,8 +7,8 @@
 //
 
 import UIKit
-
-class ViewController: UIViewController {
+// to be con
+class SportsListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
