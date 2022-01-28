@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15E0C53627A46F2A0065E876 /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15E0C53527A46F2A0065E876 /* Details.storyboard */; };
 		84725ED027A42E73008475DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84725ECF27A42E73008475DC /* AppDelegate.swift */; };
 		84725ED227A42E73008475DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84725ED127A42E73008475DC /* SceneDelegate.swift */; };
 		84725ED427A42E73008475DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84725ED327A42E73008475DC /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15E0C53527A46F2A0065E876 /* Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
 		84725ECC27A42E73008475DC /* SportsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84725ECF27A42E73008475DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84725ED127A42E73008475DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15E0C53427A46EDD0065E876 /* storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				84725ED527A42E73008475DC /* Main.storyboard */,
+				15E0C53527A46F2A0065E876 /* Details.storyboard */,
+			);
+			path = storyboards;
+			sourceTree = "<group>";
+		};
 		84725EC327A42E73008475DC = {
 			isa = PBXGroup;
 			children = (
@@ -59,7 +70,7 @@
 				84725ECF27A42E73008475DC /* AppDelegate.swift */,
 				84725ED127A42E73008475DC /* SceneDelegate.swift */,
 				84725ED327A42E73008475DC /* ViewController.swift */,
-				84725ED527A42E73008475DC /* Main.storyboard */,
+				15E0C53427A46EDD0065E876 /* storyboards */,
 				84725ED827A42E76008475DC /* Assets.xcassets */,
 				84725EDA27A42E76008475DC /* LaunchScreen.storyboard */,
 				84725EDD27A42E76008475DC /* Info.plist */,
@@ -128,6 +139,7 @@
 				84725EDC27A42E76008475DC /* LaunchScreen.storyboard in Resources */,
 				84725ED927A42E76008475DC /* Assets.xcassets in Resources */,
 				84725ED727A42E73008475DC /* Main.storyboard in Resources */,
+				15E0C53627A46F2A0065E876 /* Details.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
