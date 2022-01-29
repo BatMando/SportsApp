@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qbd-cD-DW6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -28,6 +29,7 @@
                                 <cells/>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Vi2-KZ-2Lo"/>
                         <color key="backgroundColor" name="MainBackground"/>
                         <constraints>
                             <constraint firstItem="gGo-a1-FI2" firstAttribute="top" secondItem="Vi2-KZ-2Lo" secondAttribute="top" id="1Nl-RY-mWj"/>
@@ -35,7 +37,6 @@
                             <constraint firstItem="gGo-a1-FI2" firstAttribute="leading" secondItem="Vi2-KZ-2Lo" secondAttribute="leading" id="Vfu-6x-29b"/>
                             <constraint firstItem="gGo-a1-FI2" firstAttribute="bottom" secondItem="Vi2-KZ-2Lo" secondAttribute="bottom" id="kRS-jD-O7L"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Vi2-KZ-2Lo"/>
                     </view>
                     <navigationItem key="navigationItem" title="Sports App" id="RPX-4r-1ju">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="listview_ic" id="tDi-4n-0bF"/>
@@ -58,6 +59,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="YDU-BQ-m2d"/>
                         <color key="backgroundColor" name="MainBackground"/>
                         <constraints>
                             <constraint firstItem="bpx-ke-rYb" firstAttribute="bottom" secondItem="YDU-BQ-m2d" secondAttribute="bottom" id="04d-U1-LPI"/>
@@ -65,7 +67,6 @@
                             <constraint firstItem="bpx-ke-rYb" firstAttribute="top" secondItem="YDU-BQ-m2d" secondAttribute="top" id="PLN-aQ-45b"/>
                             <constraint firstItem="bpx-ke-rYb" firstAttribute="leading" secondItem="YDU-BQ-m2d" secondAttribute="leading" id="d8h-d5-hD0"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="YDU-BQ-m2d"/>
                     </view>
                     <navigationItem key="navigationItem" title="Sports App" id="WQE-oz-UIF"/>
                 </viewController>
@@ -138,7 +139,7 @@
         <image name="listview_ic" width="36" height="29.5"/>
         <image name="sports_ic" width="41" height="26"/>
         <namedColor name="MainBackground">
-            <color red="0.12549019607843137" green="0.098039215686274508" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.125" green="0.097999997437000275" blue="0.2630000114440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
