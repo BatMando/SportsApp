@@ -23,9 +23,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oPH-b6-7Wa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-984" y="106"/>
+            <point key="canvasLocation" x="671" y="102"/>
         </scene>
-        <!--League Details View Controller-->
+        <!--Premier league-->
         <scene sceneID="ACe-tX-ZLB">
             <objects>
                 <viewController storyboardIdentifier="LeagueDetailsViewController" id="mv3-eo-NU3" customClass="LeagueDetailsViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,10 +35,20 @@
                         <viewLayoutGuide key="safeArea" id="L4j-sr-iwo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Premier league" id="isA-M1-1YA">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="fav_ic_filled" id="4UO-MD-XxM">
+                            <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="latestEventsTableView" destination="EJQ-aF-1C7" id="z5f-vb-bLL"/>
+                        <outlet property="teamsCollectionView" destination="NzJ-cw-Ny1" id="XFq-xy-UvK"/>
+                        <outlet property="upcomingEventsCollectionView" destination="tg7-5I-9LD" id="OPM-og-Ehd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sIx-nq-9JS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-238" y="103"/>
+            <point key="canvasLocation" x="1375" y="102"/>
         </scene>
         <!--Team Details View Controller-->
         <scene sceneID="cGP-u5-Fa0">
@@ -235,6 +245,36 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IMt-Iq-NOv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="2074" y="102"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6ob-OK-qGD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qar-jM-q7y" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Ln0-Z0-OCc">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="MainBackground"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="mv3-eo-NU3" kind="relationship" relationship="rootViewController" id="Ahh-DW-dzE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Wa-Qh-4ae" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1374" y="-589"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="fav_ic_filled" width="30" height="26"/>
+        <namedColor name="MainBackground">
+            <color red="0.125" green="0.097999997437000275" blue="0.2630000114440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
             <point key="canvasLocation" x="465.21739130434787" y="105.80357142857143"/>
         </scene>
     </scenes>
