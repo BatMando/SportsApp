@@ -12,10 +12,23 @@ class SportsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var sportImage: UIImageView!
     @IBOutlet weak var sportName: UILabel!
+    @IBOutlet weak var bgView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        sportImage.layer.cornerRadius = 5
+        sportImage.clipsToBounds = true
+        
+        bgView.layer.cornerRadius = 5
+        bgView.clipsToBounds = true
+        	
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+    }
+    
+    
 }
