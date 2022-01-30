@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="o6l-uM-5kl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="o6l-uM-5kl">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,7 +22,6 @@
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="QSj-PP-675"/>
                         <color key="backgroundColor" name="MainBackground"/>
                         <constraints>
                             <constraint firstItem="cWP-q4-YUs" firstAttribute="bottom" secondItem="QSj-PP-675" secondAttribute="bottom" constant="8" id="9fj-af-iru"/>
@@ -32,6 +29,7 @@
                             <constraint firstItem="cWP-q4-YUs" firstAttribute="top" secondItem="QSj-PP-675" secondAttribute="top" constant="16" id="oBV-8P-4OY"/>
                             <constraint firstItem="cWP-q4-YUs" firstAttribute="leading" secondItem="QSj-PP-675" secondAttribute="leading" id="txL-L7-Tiz"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="QSj-PP-675"/>
                     </view>
                     <connections>
                         <outlet property="leaguesTableView" destination="cWP-q4-YUs" id="1b7-QH-8zG"/>
@@ -62,7 +60,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoming events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uiZ-cd-BtY">
-                                                                <rect key="frame" x="8" y="8" width="157.5" height="24"/>
+                                                                <rect key="frame" x="8" y="8" width="157" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -94,7 +92,7 @@
                                                         <rect key="frame" x="0.0" y="218" width="414" height="210"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latest events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGu-iX-V9k">
-                                                                <rect key="frame" x="8" y="8" width="121" height="24"/>
+                                                                <rect key="frame" x="8" y="8" width="120.5" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -119,7 +117,7 @@
                                                         <rect key="frame" x="0.0" y="436" width="414" height="210"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teams" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kD5-7l-fph">
-                                                                <rect key="frame" x="8" y="8" width="59" height="24"/>
+                                                                <rect key="frame" x="8" y="8" width="58.5" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -170,7 +168,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="L4j-sr-iwo"/>
                         <color key="backgroundColor" name="MainBackground"/>
                         <constraints>
                             <constraint firstItem="gAU-CS-08g" firstAttribute="leading" secondItem="L4j-sr-iwo" secondAttribute="leading" id="9EI-O8-n7D"/>
@@ -178,6 +175,7 @@
                             <constraint firstItem="L4j-sr-iwo" firstAttribute="bottom" secondItem="gAU-CS-08g" secondAttribute="bottom" id="PZE-84-dPm"/>
                             <constraint firstItem="L4j-sr-iwo" firstAttribute="trailing" secondItem="gAU-CS-08g" secondAttribute="trailing" id="j1w-8i-BW5"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="L4j-sr-iwo"/>
                     </view>
                     <connections>
                         <outlet property="latestEventsTableView" destination="9BZ-DL-mcx" id="hJf-bn-QsE"/>
@@ -242,7 +240,7 @@
                                                         </constraints>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstItem="GFu-8j-4ki" firstAttribute="top" secondItem="qW1-aN-CBa" secondAttribute="top" id="CWE-A9-Sl4"/>
                                                     <constraint firstItem="kxH-BD-aPA" firstAttribute="top" secondItem="qW1-aN-CBa" secondAttribute="top" constant="150" id="RJD-aP-wNf"/>
@@ -271,7 +269,7 @@
                                                         <rect key="frame" x="123" y="85" width="168" height="170"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home Kit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUX-QZ-a58">
-                                                        <rect key="frame" x="82" y="44" width="74.5" height="22"/>
+                                                        <rect key="frame" x="82" y="44" width="75" height="22"/>
                                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="18"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -375,7 +373,6 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="Vn2-rc-2vl"/>
                         <color key="backgroundColor" name="MainBackground"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="tdk-xg-pK5" secondAttribute="bottom" id="GWr-Fq-8n9"/>
@@ -384,6 +381,7 @@
                             <constraint firstItem="tdk-xg-pK5" firstAttribute="trailing" secondItem="Vn2-rc-2vl" secondAttribute="trailing" id="aVc-BA-O4d"/>
                             <constraint firstItem="tdk-xg-pK5" firstAttribute="leading" secondItem="Vn2-rc-2vl" secondAttribute="leading" id="ljy-l3-xqa"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Vn2-rc-2vl"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IMt-Iq-NOv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -404,8 +402,5 @@
         <namedColor name="MainBackground">
             <color red="0.125" green="0.097999997437000275" blue="0.2630000114440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
