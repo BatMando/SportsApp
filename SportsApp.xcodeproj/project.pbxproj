@@ -247,7 +247,7 @@
 		849F492827A6B56100C0321F /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
-				849F493327A6B5D800C0321F /* New Group */,
+				849F493327A6B5D800C0321F /* UpcomingEventCollectionViewCell */,
 				849F492E27A6B5A700C0321F /* TeamCollectionViewCell */,
 				849F492927A6B56A00C0321F /* LatestEventTableViewCell */,
 			);
@@ -272,13 +272,13 @@
 			path = TeamCollectionViewCell;
 			sourceTree = "<group>";
 		};
-		849F493327A6B5D800C0321F /* New Group */ = {
+		849F493327A6B5D800C0321F /* UpcomingEventCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				849F493427A6B60700C0321F /* UpcomingEventCollectionViewCell.swift */,
 				849F493527A6B60700C0321F /* UpcomingEventCollectionViewCell.xib */,
 			);
-			path = "New Group";
+			path = UpcomingEventCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		849F493827A6B6E800C0321F /* TableView */ = {
