@@ -9,22 +9,37 @@
 import UIKit
 
 class LeaguesListViewController: UIViewController {
-
+    
+    // MARK: - IBOutlet
+    @IBOutlet weak var leaguesTableView: UITableView!
+    
+    let data = ["egyption league","egyption league","egyption league","mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"]
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        configureTableView()
+    }
+    // MARK: - Methods
+    func configureTableView () {
+        self.leaguesTableView.register(UINib(nibName: "LeaguesTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
+        self.leaguesTableView.delegate = self
+        self.leaguesTableView.dataSource = self
+    }
+}
+// MARK: - Tableview delegate and datasource
+extension LeaguesListViewController : UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.data.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? LeaguesTableViewCell {
+            cell.leagueName.text = self.data[indexPath.row]
+            return cell
+        }
+        return UITableViewCell()
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
