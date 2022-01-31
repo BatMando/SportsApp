@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,13 +31,12 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CvB-Fm-7g0">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CvB-Fm-7g0">
                                 <rect key="frame" x="262" y="4" width="54" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="CvB-Fm-7g0" secondAttribute="height" multiplier="1:1" id="tlY-zU-cZl"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="fav_ic_unfilled" title=" "/>
+                                <state key="normal" title=" " image="fav_ic_filled"/>
                                 <connections>
                                     <action selector="pressFavouriteBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="WfW-XS-uwD"/>
                                 </connections>
@@ -77,8 +75,8 @@
                     <constraint firstItem="H8S-zz-68L" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="scA-va-eja"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="favouriteBtnImage" destination="CvB-Fm-7g0" id="vBG-qi-5MU"/>
                 <outlet property="leagueImage" destination="DOa-J5-cA2" id="lXf-kH-fhr"/>
@@ -89,7 +87,7 @@
     </objects>
     <resources>
         <image name="CellitemBg" width="326" height="53"/>
-        <image name="fav_ic_unfilled" width="29.5" height="28.5"/>
+        <image name="fav_ic_filled" width="30" height="26"/>
         <image name="leaguePlaceholder" width="1280" height="1280"/>
     </resources>
 </document>
