@@ -36,6 +36,7 @@
 		849F493627A6B60700C0321F /* UpcomingEventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F493427A6B60700C0321F /* UpcomingEventCollectionViewCell.swift */; };
 		849F493727A6B60700C0321F /* UpcomingEventCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849F493527A6B60700C0321F /* UpcomingEventCollectionViewCell.xib */; };
 		849F493A27A6B6F400C0321F /* SelfSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F493927A6B6F400C0321F /* SelfSizedTableView.swift */; };
+		84BEA4B127A7860E006843A2 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BEA4B027A7860E006843A2 /* UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		849F493427A6B60700C0321F /* UpcomingEventCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingEventCollectionViewCell.swift; sourceTree = "<group>"; };
 		849F493527A6B60700C0321F /* UpcomingEventCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpcomingEventCollectionViewCell.xib; sourceTree = "<group>"; };
 		849F493927A6B6F400C0321F /* SelfSizedTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfSizedTableView.swift; sourceTree = "<group>"; };
+		84BEA4B027A7860E006843A2 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +252,7 @@
 		84725EED27A47666008475DC /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				84BEA4AF27A785F4006843A2 /* UIView */,
 				590711A727A7323A0061E6F6 /* UIImageView */,
 				849F493827A6B6E800C0321F /* TableView */,
 				84600C8C27A4887200640080 /* CoreDataManager */,
@@ -318,6 +321,14 @@
 				849F493927A6B6F400C0321F /* SelfSizedTableView.swift */,
 			);
 			path = TableView;
+			sourceTree = "<group>";
+		};
+		84BEA4AF27A785F4006843A2 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				84BEA4B027A7860E006843A2 /* UIView.swift */,
+			);
+			path = UIView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -407,6 +418,7 @@
 				84725ED027A42E73008475DC /* AppDelegate.swift in Sources */,
 				84600C8327A4800600640080 /* FavouriteLeaguesViewController.swift in Sources */,
 				84600C8E27A4888700640080 /* CoreDataManager.swift in Sources */,
+				84BEA4B127A7860E006843A2 /* UIView.swift in Sources */,
 				84600C7D27A47F5B00640080 /* TabBarViewController.swift in Sources */,
 				84600C7F27A47FBF00640080 /* LeaguesListViewController.swift in Sources */,
 				590711A927A7326C0061E6F6 /* UIImageView.swift in Sources */,

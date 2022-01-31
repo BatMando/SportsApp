@@ -41,5 +41,10 @@ extension LeaguesListViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Details", bundle: nil)
+        let leagueDetailsViewController = storyboard.instantiateViewController(withIdentifier: String(describing: LeagueDetailsViewController.self)) as! LeagueDetailsViewController
+        self.navigationController?.pushViewController(leagueDetailsViewController, animated: true)
+    }
     
 }

@@ -92,7 +92,12 @@ extension LeagueDetailsViewController : UICollectionViewDataSource {
 }
 // MARK: - extension UICollectionViewDelegate
 extension LeagueDetailsViewController : UICollectionViewDelegate{
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard collectionView == teamsCollectionView else {return}
+        let storyboard = UIStoryboard(name: "Details", bundle: nil)
+        let teamDetailsViewController = storyboard.instantiateViewController(withIdentifier: String(describing: TeamDetailsViewController.self)) as! TeamDetailsViewController
+        self.navigationController?.pushViewController(teamDetailsViewController, animated: true)
+    }
     
 }
 // MARK: - extension UICollectionViewDelegateFlowLayout

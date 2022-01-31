@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,49 +18,61 @@
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sportImage" translatesAutoresizingMaskIntoConstraints="NO" id="6Np-VN-bjc">
                         <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gj-hU-och">
-                        <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                        <rect key="frame" x="0.0" y="59.5" width="85" height="25.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Soccer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6wx-pj-ihE">
-                                <rect key="frame" x="20" y="34.5" width="45.5" height="16"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Soccer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="6wx-pj-ihE">
+                                <rect key="frame" x="0.0" y="0.0" width="85" height="25.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" name="mainOverlay"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="0.4314800941780822" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="6wx-pj-ihE" firstAttribute="centerY" secondItem="2gj-hU-och" secondAttribute="centerY" id="ZDm-kj-13t"/>
-                            <constraint firstItem="6wx-pj-ihE" firstAttribute="centerX" secondItem="2gj-hU-och" secondAttribute="centerX" id="fwC-Jh-dw9"/>
+                            <constraint firstAttribute="trailing" secondItem="6wx-pj-ihE" secondAttribute="trailing" id="JoG-3J-ixT"/>
+                            <constraint firstItem="6wx-pj-ihE" firstAttribute="top" secondItem="2gj-hU-och" secondAttribute="top" id="Ns9-dz-AET"/>
+                            <constraint firstAttribute="bottom" secondItem="6wx-pj-ihE" secondAttribute="bottom" id="qxK-BO-PU0"/>
+                            <constraint firstItem="6wx-pj-ihE" firstAttribute="leading" secondItem="2gj-hU-och" secondAttribute="leading" id="ujT-19-4Fm"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="2gj-hU-och" secondAttribute="trailing" id="48t-sZ-v0w"/>
+                <constraint firstItem="2gj-hU-och" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="3q4-Pb-v6k"/>
                 <constraint firstAttribute="trailing" secondItem="6Np-VN-bjc" secondAttribute="trailing" id="7Kz-Fg-UHU"/>
                 <constraint firstAttribute="bottom" secondItem="6Np-VN-bjc" secondAttribute="bottom" id="D4s-xj-WOb"/>
-                <constraint firstItem="2gj-hU-och" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="DaD-a1-7od"/>
-                <constraint firstAttribute="bottom" secondItem="2gj-hU-och" secondAttribute="bottom" id="FKL-5f-qdr"/>
                 <constraint firstItem="6Np-VN-bjc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Rhz-GN-cam"/>
                 <constraint firstItem="6Np-VN-bjc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="W3e-c1-kMs"/>
-                <constraint firstItem="2gj-hU-och" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="dBt-rO-CPK"/>
+                <constraint firstAttribute="bottom" secondItem="2gj-hU-och" secondAttribute="bottom" id="X8y-k8-UIX"/>
+                <constraint firstItem="2gj-hU-och" firstAttribute="height" secondItem="6Np-VN-bjc" secondAttribute="height" multiplier="0.3" id="bXy-gd-rtj"/>
+                <constraint firstAttribute="trailing" secondItem="2gj-hU-och" secondAttribute="trailing" id="mcV-w4-jHz"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="85" height="68"/>
             <connections>
                 <outlet property="bgView" destination="2gj-hU-och" id="LeA-Pg-BNg"/>
-                <outlet property="sportImage" destination="6Np-VN-bjc" id="GeX-EA-0fT"/>
-                <outlet property="sportName" destination="6wx-pj-ihE" id="LK5-5q-M9a"/>
+                <outlet property="sportImage" destination="6Np-VN-bjc" id="p5O-a6-4BS"/>
+                <outlet property="sportName" destination="6wx-pj-ihE" id="ZGs-j8-e5u"/>
             </connections>
             <point key="canvasLocation" x="174.63768115942031" y="122.87946428571428"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="sportImage" width="1200" height="714"/>
-        <namedColor name="mainOverlay">
-            <color red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="0.69999998807907104" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

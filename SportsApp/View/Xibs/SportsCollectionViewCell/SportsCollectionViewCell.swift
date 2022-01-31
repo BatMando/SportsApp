@@ -17,17 +17,15 @@ class SportsCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        sportImage.layer.cornerRadius = 5
-        sportImage.clipsToBounds = true
-        
-        bgView.layer.cornerRadius = 5
-        bgView.clipsToBounds = true
+       
         	
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+       // contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0))
+//        sportImage.cornerRadius = 20
+//        sportImage.clipsToBounds = true
     }
     
     

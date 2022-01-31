@@ -11,18 +11,18 @@ import UIKit
 @IBDesignable
 extension UIImageView {
 
-    @IBInspectable
-    public var cornerRadius: CGFloat
-    {
-        set (radius) {
-            self.layer.cornerRadius = radius
-            self.layer.masksToBounds = radius > 0
-        }
-
-        get {
-            return self.layer.cornerRadius
-        }
-    }
+//    @IBInspectable
+//    public var cornerRadius: CGFloat
+//    {
+//        set (radius) {
+//            self.layer.cornerRadius = radius
+//            self.layer.masksToBounds = radius > 0
+//        }
+//
+//        get {
+//            return self.layer.cornerRadius
+//        }
+//    }
     @IBInspectable
     public var isRounded: Bool
     {
