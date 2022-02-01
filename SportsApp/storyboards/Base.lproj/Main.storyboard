@@ -26,10 +26,6 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
-                                <connections>
-                                    <outlet property="dataSource" destination="sMl-io-qfV" id="Dve-dt-zFz"/>
-                                    <outlet property="delegate" destination="sMl-io-qfV" id="O3y-jQ-k9s"/>
-                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" name="MainBackground"/>

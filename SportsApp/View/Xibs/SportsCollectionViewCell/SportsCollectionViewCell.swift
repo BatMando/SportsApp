@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SportsCollectionViewCell: UICollectionViewCell {
     
@@ -23,9 +24,15 @@ class SportsCollectionViewCell: UICollectionViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-       // contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0))
-//        sportImage.cornerRadius = 20
-//        sportImage.clipsToBounds = true
+
+    }
+    
+    var model : SportModel? {
+        didSet{
+            guard let model = model else{return}
+            self .sportName.text = model.strSport
+            self.sportImage.kf.setImage(with: URL(string: model.strSportThumb ?? "" ))
+        }
     }
     
     
