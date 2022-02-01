@@ -13,15 +13,28 @@ class LeaguesListViewController: UIViewController {
     // MARK: - IBOutlet
     @IBOutlet weak var leaguesTableView: UITableView!
     
-    let data = ["egyption league","egyption league","egyption league","mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"]
+    // MARK: - Properties
+
+    var data : [LeagueModel] = []
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        NetworkManager().request(fromEndpoint: .allLeagues, httpMethod: .get) { (result:Result<GetAllLeaguesResponseModel, Error>) in
+              switch result {
+              case .success(let response):
+                  self.data = response.leagues
+                  self.leaguesTableView.reloadData()
+                  print(response.leagues.count)
+              case .failure(let error):
+                  print(error.localizedDescription)
+              }
+          }
     }
     // MARK: - Methods
     func configureTableView () {
-        self.leaguesTableView.register(UINib(nibName: "LeaguesTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
+        self.leaguesTableView.register(UINib(nibName: String(describing: LeaguesTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: LeaguesTableViewCell.self))
         self.leaguesTableView.delegate = self
         self.leaguesTableView.dataSource = self
     }
@@ -32,8 +45,8 @@ extension LeaguesListViewController : UITableViewDelegate,UITableViewDataSource{
         return self.data.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? LeaguesTableViewCell {
-            cell.leagueName.text = self.data[indexPath.row]
+        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: LeaguesTableViewCell.self), for: indexPath) as? LeaguesTableViewCell {
+            cell.model = self.data[indexPath.row]
             return cell
         }
         return UITableViewCell()

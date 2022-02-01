@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SportsListViewController: UIViewController {
+class SportsListViewController: BaseViewController {
     
     //MARK: - IBOutlet
     @IBOutlet weak var sportsCollectionView: UICollectionView!
@@ -16,19 +16,31 @@ class SportsListViewController: UIViewController {
     
     //MARK: - Properties
     var isGridActive = false
-    let sportsCellID = "sportsCell"
+    var sports : [SportModel] = []
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        NetworkManager().request(fromEndpoint: .allSports, httpMethod: .get) { (result:Result<GetAllSportsResponseModel, Error>) in
+            switch result {
+            case .success(let response):
+                self.sports = response.sports ?? []
+                self.sportsCollectionView.reloadData()
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
         
     }
     
     //MARK: - Methodes
     private func configureCollectionView(){
-        let nibCollectionViewCell = UINib(nibName: "SportsCollectionViewCell", bundle: nil)
-        sportsCollectionView.register(nibCollectionViewCell, forCellWithReuseIdentifier: sportsCellID)
+        let nibCollectionViewCell = UINib(nibName: String(describing: SportsCollectionViewCell.self), bundle: nil)
+        sportsCollectionView.register(nibCollectionViewCell, forCellWithReuseIdentifier: String(describing: SportsCollectionViewCell.self))
+        sportsCollectionView.dataSource = self
+        sportsCollectionView.delegate = self
     }
     
     //MARK: - IBActions
@@ -36,40 +48,35 @@ class SportsListViewController: UIViewController {
         isGridActive = !isGridActive
         self.sportsCollectionView.reloadData()
     }
-    
-    
 }
 //MARK: - UICollectionViewDelegate
 extension SportsListViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Details", bundle: nil)
-        let leaguesViewController = storyboard.instantiateViewController(withIdentifier: String(describing: LeaguesListViewController.self)) as! LeaguesListViewController
-        self.navigationController?.pushViewController(leaguesViewController, animated: true)
+       navigateToLeaguesViewController(withSportId: 0)
     }
-    
 }
 
 //MARK: - UICollectionViewDataSource
 extension SportsListViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return sports.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let sportsCVCell = sportsCollectionView.dequeueReusableCell(withReuseIdentifier: sportsCellID, for: indexPath) as! SportsCollectionViewCell
+        let sportsCVCell = sportsCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: SportsCollectionViewCell.self), for: indexPath) as! SportsCollectionViewCell
+        sportsCVCell.model = sports[indexPath.row]
+        //populate cell
                 return sportsCVCell
     }
-    
 }
 
 extension SportsListViewController: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let size = isGridActive ? CGSize(width: (self.sportsCollectionView.frame.width - 16) / 2, height: (self.sportsCollectionView.frame.width) / 2 ): CGSize(width: sportsCollectionView.frame.width , height:140)
-        
+        let size = isGridActive ? CGSize(width: (self.sportsCollectionView.frame.width - 16) / 2, height: (self.sportsCollectionView.frame.width - 16) / 2 ): CGSize(width: sportsCollectionView.frame.width , height:140)
         return size
     }
 }

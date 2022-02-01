@@ -7,3 +7,6 @@
 //
 
 import Foundation
+struct GetAllSportsResponseModel : Codable{
+    var sports : [SportModel]?
+}
