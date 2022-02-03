@@ -18,22 +18,28 @@ class SportsCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-       
-        	
+        
+        
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-
+        
+    }
+    func displaySportName(name : String){
+        self.sportName.text = name
     }
     
-    var model : SportModel? {
-        didSet{
-            guard let model = model else{return}
-            self .sportName.text = model.strSport
-            self.sportImage.kf.setImage(with: URL(string: model.strSportThumb ?? "" ))
-        }
+    func displayCellImage(imageUrl : String){
+        self.sportImage.kf.setImage(with: URL(string: imageUrl ))
     }
-    
+    //    var model : SportModel? {
+    //        didSet{
+    //            guard let model = model else{return}
+    //            self .sportName.text = model.strSport
+    //            self.sportImage.kf.setImage(with: URL(string: model.strSportThumb ?? "" ))
+    //        }
+    //    }
+    //
     
 }

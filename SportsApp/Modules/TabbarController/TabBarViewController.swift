@@ -12,7 +12,17 @@ class TabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tabBar.tintColor = UIColor.white // tab bar icon tint color
+        self.tabBar.isTranslucent = false
+        UITabBar.appearance().barTintColor = UIColor(named: "bottomNavigation")
     }
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        print("appered")
+//    }
 
 }

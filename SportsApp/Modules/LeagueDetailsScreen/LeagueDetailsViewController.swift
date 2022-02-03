@@ -16,6 +16,7 @@ class LeagueDetailsViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "League Details"
         configureCollectionViews()
         
     }

@@ -16,23 +16,13 @@ class SportsListViewController: BaseViewController {
     
     //MARK: - Properties
     var isGridActive = false
-    var sports : [SportModel] = []
+    var presenter : SportsPresenter?
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
-        NetworkManager().request(fromEndpoint: .allSports, httpMethod: .get) { (result:Result<GetAllSportsResponseModel, Error>) in
-            switch result {
-            case .success(let response):
-                self.sports = response.sports ?? []
-                self.sportsCollectionView.reloadData()
-                
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-        
+        presenter = SportsListPresenter(view: self) //coupling
     }
     
     //MARK: - Methodes
@@ -52,7 +42,7 @@ class SportsListViewController: BaseViewController {
 //MARK: - UICollectionViewDelegate
 extension SportsListViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       navigateToLeaguesViewController(withSportId: 0)
+        navigateToLeaguesViewController(withSportId: 0)
     }
 }
 
@@ -60,15 +50,16 @@ extension SportsListViewController: UICollectionViewDelegate{
 extension SportsListViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sports.count
+        return presenter?.getSportsCount() ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let sportsCVCell = sportsCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: SportsCollectionViewCell.self), for: indexPath) as! SportsCollectionViewCell
-        sportsCVCell.model = sports[indexPath.row]
-        //populate cell
-                return sportsCVCell
+        let sport = presenter?.getSport(atIndex: indexPath)
+        sportsCVCell.displaySportName(name: sport?.strSport ?? "")
+        sportsCVCell.displayCellImage(imageUrl: sport?.strSportThumb ?? "")
+        return sportsCVCell
     }
 }
 
@@ -80,4 +71,12 @@ extension SportsListViewController: UICollectionViewDelegateFlowLayout{
         return size
     }
 }
-
+extension SportsListViewController : presenterToViewDelegate {
+    
+    
+    func reloadTableView() {
+        self.sportsCollectionView.reloadData()
+    }
+    
+    
+}

@@ -10,27 +10,23 @@ import UIKit
 
 class LeaguesListViewController: UIViewController {
     
+    
     // MARK: - IBOutlet
     @IBOutlet weak var leaguesTableView: UITableView!
     
     // MARK: - Properties
-
+    
     var data : [LeagueModel] = []
+    private let presenter = LeaguesListViewPresenter ()
+//    let appearance = UINavigationBarAppearance()
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Leagues"
         configureTableView()
-        NetworkManager().request(fromEndpoint: .allLeagues, httpMethod: .get) { (result:Result<GetAllLeaguesResponseModel, Error>) in
-              switch result {
-              case .success(let response):
-                  self.data = response.leagues
-                  self.leaguesTableView.reloadData()
-                  print(response.leagues.count)
-              case .failure(let error):
-                  print(error.localizedDescription)
-              }
-          }
+        presenter.setViewDelegate(delegate: self)
+        presenter.getLeagues()
     }
     // MARK: - Methods
     func configureTableView () {
@@ -55,9 +51,20 @@ extension LeaguesListViewController : UITableViewDelegate,UITableViewDataSource{
         return 70
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Details", bundle: nil)
-        let leagueDetailsViewController = storyboard.instantiateViewController(withIdentifier: String(describing: LeagueDetailsViewController.self)) as! LeagueDetailsViewController
-        self.navigationController?.pushViewController(leagueDetailsViewController, animated: true)
+        presenter.navigateToLeagueDetailsViewController(league: data[indexPath.row])
     }
     
 }
+// MARK: - League List View delegate
+
+extension LeaguesListViewController :LeaguesListViewPresenterDelegate{
+    func presentLeagues(data: [LeagueModel]) {
+        self.data=data
+    }
+    
+    func renderTableView() {
+        self.leaguesTableView.reloadData()
+    }
+    
+}
+
