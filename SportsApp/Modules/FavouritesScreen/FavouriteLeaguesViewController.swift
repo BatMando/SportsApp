@@ -8,13 +8,24 @@
 
 import UIKit
 
-class FavouriteLeaguesViewController: UIViewController {
+class FavouriteLeaguesViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        self.tabBarController?.tabBar
+   
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("appeared")
+        self.tabBarController?.tabBar.tintColor = UIColor.white // tab bar icon tint color
+        self.tabBarController?.tabBar.isTranslucent = false
+        UITabBar.appearance().barTintColor = UIColor(named: "bottomNavigation")
+//        UITabBar.appearance().barTintColor = UIColor.red
+
+    }
+
     
 
     /*

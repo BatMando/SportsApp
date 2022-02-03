@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,10 +27,10 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gj-hU-och">
-                        <rect key="frame" x="0.0" y="59.5" width="85" height="25.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Soccer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="6wx-pj-ihE">
-                                <rect key="frame" x="0.0" y="0.0" width="85" height="25.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -41,7 +42,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="0.4314800941780822" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.55000000000000004" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="6wx-pj-ihE" secondAttribute="trailing" id="JoG-3J-ixT"/>
                             <constraint firstItem="6wx-pj-ihE" firstAttribute="top" secondItem="2gj-hU-och" secondAttribute="top" id="Ns9-dz-AET"/>
@@ -49,7 +50,7 @@
                             <constraint firstItem="6wx-pj-ihE" firstAttribute="leading" secondItem="2gj-hU-och" secondAttribute="leading" id="ujT-19-4Fm"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="NO"/>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="20"/>
                             </userDefinedRuntimeAttribute>
@@ -57,6 +58,7 @@
                     </view>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="2gj-hU-och" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="3q4-Pb-v6k"/>
                 <constraint firstAttribute="trailing" secondItem="6Np-VN-bjc" secondAttribute="trailing" id="7Kz-Fg-UHU"/>
@@ -64,10 +66,9 @@
                 <constraint firstItem="6Np-VN-bjc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Rhz-GN-cam"/>
                 <constraint firstItem="6Np-VN-bjc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="W3e-c1-kMs"/>
                 <constraint firstAttribute="bottom" secondItem="2gj-hU-och" secondAttribute="bottom" id="X8y-k8-UIX"/>
-                <constraint firstItem="2gj-hU-och" firstAttribute="height" secondItem="6Np-VN-bjc" secondAttribute="height" multiplier="0.3" id="bXy-gd-rtj"/>
+                <constraint firstItem="2gj-hU-och" firstAttribute="height" secondItem="6Np-VN-bjc" secondAttribute="height" id="bXy-gd-rtj"/>
                 <constraint firstAttribute="trailing" secondItem="2gj-hU-och" secondAttribute="trailing" id="mcV-w4-jHz"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="85" height="68"/>
             <connections>
                 <outlet property="bgView" destination="2gj-hU-och" id="LeA-Pg-BNg"/>

@@ -38,19 +38,19 @@ class NetworkManager {
     
         
         Alamofire.request(url, method: httpMethod, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
-            
+
             if let error = response.error {
                 completionOnMain(.failure(error))
                 return
             }
-            
+
             guard let urlResponse = response.response else {
                 return completionOnMain(.failure(Errors.invalidResponse))
             }
             if !(200..<300).contains(urlResponse.statusCode) {
                 return completionOnMain(.failure(Errors.invalidStatusCode))
             }
-            
+
             guard let data = response.data else { return }
             do {
                 let response = try JSONDecoder().decode(T.self, from: data)
