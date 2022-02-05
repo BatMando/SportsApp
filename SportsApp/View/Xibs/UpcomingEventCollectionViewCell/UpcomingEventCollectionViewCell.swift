@@ -10,6 +10,11 @@ import UIKit
 
 class UpcomingEventCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var eventThumbnail: UIImageView!
+    @IBOutlet weak var eventTime: UILabel!
+    @IBOutlet weak var eventDate: UILabel!
+    @IBOutlet weak var homeTeamName: UILabel!
+    @IBOutlet weak var awayTeamName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +24,28 @@ class UpcomingEventCollectionViewCell: UICollectionViewCell {
             super.layoutSubviews()
             contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8))
         }
-     
-
+    func displayEventDate(date : String){
+        self.eventDate.text = date
+    }
+    func displayEventTime(time : String){
+        self.eventTime.text = time
+    }
+    func displayEventThumbnail(imageUrl : String){
+        
+        guard imageUrl != "" else {
+            displayPlaceHolderImage()
+            return
+        }
+        self.eventThumbnail.kf.setImage(with: URL(string: imageUrl ))
+        
+    }
+    func displayPlaceHolderImage(){
+        self.eventThumbnail.image = UIImage(named: "latestEventsCellBG")
+    }
+    func displayHomeTeamName(name : String){
+        self.homeTeamName.text = name
+    }
+    func displayAwayTeamName(name : String){
+        self.awayTeamName.text = name
+    }
 }

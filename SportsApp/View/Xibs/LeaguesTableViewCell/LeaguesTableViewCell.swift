@@ -23,7 +23,7 @@ class LeaguesTableViewCell: UITableViewCell {
             self.leagueName.text = model.strLeague
 //            self.leagueImage.setImage("youtube_icn", forState: UIControlState.Normal)
     
-           // self.leagueImage.kf.setImage(with: URL(string: ))
+            self.leagueImage.kf.setImage(with: URL(string:model.strBadge ?? "" ))
         }
     }
     override func awakeFromNib() {

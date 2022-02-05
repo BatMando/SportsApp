@@ -23,14 +23,19 @@ class LeaguesListViewPresenter {
     
     // MARK: - Properties
     weak var delegate: LeaguesListViewPresenterDelegateAlias?
+    var sportName : String
     
+    init (sportName : String){
+        self.sportName = sportName
+    }
     
     // MARK: - Methods
     public func getLeagues(){
-        NetworkManager().request(fromEndpoint: .allLeagues, httpMethod: .get) { [weak self](result:Result<GetAllLeaguesResponseModel, Error>) in
+        
+        NetworkManager().request(fromEndpoint: .allLeagues, httpMethod: .post,parameters: ["s":sportName,"c":"England"]) { [weak self](result:Result<GetAllLeaguesResponseModel, Error>) in
             switch result {
             case .success(let response):
-                let leagues = response.leagues
+                let leagues = response.countrys
                 self?.delegate?.presentLeagues(data: leagues)
                 DispatchQueue.main.async {
                     self?.delegate?.renderTableView()
@@ -47,6 +52,9 @@ class LeaguesListViewPresenter {
     }
     public func navigateToLeagueDetailsViewController(league: LeagueModel){
         let leagueDetailsViewController = Storyboards.details.instance.instantiateViewController(withIdentifier: String(describing: LeagueDetailsViewController.self)) as! LeagueDetailsViewController
+        leagueDetailsViewController.leagueName = league.strLeague
+        leagueDetailsViewController.modalPresentationStyle = .fullScreen
         delegate?.navigationController?.pushViewController(leagueDetailsViewController, animated: true)
+//        delegate?.navigationController?.present(leagueDetailsViewController, animated: true, completion: nil)
     }
 }

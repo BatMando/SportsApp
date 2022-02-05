@@ -12,4 +12,9 @@ struct LeagueModel:Codable {
     var strLeague          : String?
     var strSport           : String?
     var strLeagueAlternate : String?
+    var strCurrentSeason   : String?
+    var strYoutube         : String?
+    var strBadge           : String?
+
+    
 }
