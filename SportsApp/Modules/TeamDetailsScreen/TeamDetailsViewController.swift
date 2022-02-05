@@ -13,6 +13,8 @@ class TeamDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Team Details"
+        
+        
         // Do any additional setup after loading the view.
     }
     

@@ -5,10 +5,10 @@
 //  Created by admin on 1/28/22.
 //  Copyright © 2022 admin. All rights reserved.
 //
-
 import UIKit
 
 class LeagueDetailsViewController: UIViewController {
+    
     // MARK: - IBOutlet
     @IBOutlet weak var teamsCollectionView: UICollectionView!
     @IBOutlet weak var latestEventsTableView: SelfSizedTableView!
@@ -17,28 +17,26 @@ class LeagueDetailsViewController: UIViewController {
     
     // MARK: - Properties
     var leagueName : String?
-    var teams : [TeamModel]?
-    var upComingEvents : [EventModel]?
-    var latestEvents : [EventModel]?
+    var leagueDetailsPresenter : LeagueDetailsPresenterProtocol!
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         configureCollectionViews()
-        getTeams()
-        getUpcomingEvents()
-        getLatestEvents()
+        self.leagueDetailsPresenter = LeagueDetailsPresenter(LeagueDetailsView: self)
     }
     
     // MARK: - Functions
+    private func configureUI () {
+        self.LeagueTitleLabel.text = leagueName
+    }
+    
     private func configureCollectionViews(){
         registerCellsForCollectionViews()
         setupCollectionViewsDataSource()
     }
-    private func configureUI () {
-        self.LeagueTitleLabel.text = leagueName
-    }
+    
     func getCurrentDate() -> String {
         let date = Date()
         let formatter = DateFormatter()
@@ -46,57 +44,18 @@ class LeagueDetailsViewController: UIViewController {
         return formatter.string(from: date)
 
     }
-    public func getTeams(){
+    /*public func getTeams(){
         
-        NetworkManager().request(fromEndpoint: .allTeams, httpMethod: .post,parameters: ["l":leagueName!]) { [weak self](result:Result<GetAllTeamsResponseModel, Error>) in
-            switch result {
-            case .success(let response):
-                self?.teams = response.teams
-//                self?.delegate?.presentLeagues(data: leagues)
-                DispatchQueue.main.async {
-//                    self?.delegate?.renderTableView()
-                    self?.teamsCollectionView.reloadData()
-                }
-//                print(response.leagues.count)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+        
     }
     public func getUpcomingEvents(){
 //        ["e":("\(leagueName!)_\(getCurrentDate())")]
-        NetworkManager().request(fromEndpoint: .events, httpMethod: .post,parameters: ["e":("\(leagueName!)_2022-02-08")]) { [weak self](result:Result<GetAllUpComingEventsResponseModel, Error>) in
-            switch result {
-            case .success(let response):
-                self?.upComingEvents = response.event
-//                self?.delegate?.presentLeagues(data: leagues)
-                DispatchQueue.main.async {
-//                    self?.delegate?.renderTableView()
-                    self?.upcomingEventsCollectionView.reloadData()
-                }
-//                print(response.leagues.count)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+        
     }
     public func getLatestEvents(){
 //        ["e":("\(leagueName!)_\(getCurrentDate())")]
-        NetworkManager().request(fromEndpoint: .events, httpMethod: .post,parameters: ["e":("\(leagueName!)_2022-01-15")]) { [weak self](result:Result<GetAllLatestEventsResponseModel, Error>) in
-            switch result {
-            case .success(let response):
-                self?.latestEvents = response.event
-//                self?.delegate?.presentLeagues(data: leagues)
-                DispatchQueue.main.async {
-//                    self?.delegate?.renderTableView()
-                    self?.latestEventsTableView.reloadData()
-                }
-//                print(response.leagues.count)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
+        
+    }*/
     
     private func setupCollectionViewsDataSource(){
         teamsCollectionView.dataSource          = self
@@ -130,22 +89,25 @@ class LeagueDetailsViewController: UIViewController {
 // MARK: - extension UITableViewDataSource
 extension LeagueDetailsViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return latestEvents?.count ?? 0
+        return leagueDetailsPresenter.getLatestResultsCount()
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: LatestEventTableViewCell.self), for: indexPath) as! LatestEventTableViewCell
-        let latestEvent = latestEvents? [indexPath.row]
-        cell.displayEventThumbnail(imageUrl: latestEvent?.strThumb ?? "")
-        cell.displayEventTime(time: latestEvent?.strTime ?? "")
-        cell.displayEventDate(date: latestEvent?.dateEvent ?? "")
-        cell.displayEventStatus(status: latestEvent?.strStatus ?? "")
-        cell.displayEventResult(result: "\(latestEvent?.intHomeScore ?? " ") - \(latestEvent?.intAwayScore ?? " ")")
-        cell.displayHomeTeamName(name: latestEvent?.strHomeTeam ?? "")
-        cell.displayAwayTeamName(name: latestEvent?.strAwayTeam ?? "")
         
-        print(latestEvent?.strThumb ?? "")
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: LatestEventTableViewCell.self), for: indexPath) as! LatestEventTableViewCell
+        
+        let latestEvent = leagueDetailsPresenter.getLatestResultWithIndex(index: indexPath.row)
+        
+        cell.displayEventThumbnail(imageUrl: latestEvent.strThumb ?? "")
+        cell.displayEventTime(time: latestEvent.strTime ?? "")
+        cell.displayEventDate(date: latestEvent.dateEvent ?? "")
+        cell.displayEventStatus(status: latestEvent.strStatus ?? "")
+        cell.displayEventResult(result: "\(latestEvent.intHomeScore ?? " ") - \(latestEvent.intAwayScore ?? " ")")
+        cell.displayHomeTeamName(name: latestEvent.strHomeTeam ?? "")
+        cell.displayAwayTeamName(name: latestEvent.strAwayTeam ?? "")
+        
+        print(latestEvent.strThumb ?? "")
         return cell
     }
 }
@@ -161,33 +123,40 @@ extension LeagueDetailsViewController : UITableViewDelegate {
 extension LeagueDetailsViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == teamsCollectionView {
-            return teams?.count ?? 0
+            return leagueDetailsPresenter.getTeamsCount()
         }else {
-            return upComingEvents?.count ?? 0
+            return leagueDetailsPresenter.getUpcomingEventsCount()
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         if collectionView == teamsCollectionView {
+            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: TeamCollectionViewCell.self), for: indexPath) as! TeamCollectionViewCell
-            let team = teams? [indexPath.row]
-            cell.displayTeamName(name: team?.strTeam ?? "")
-            cell.displayTeamLogo(imageUrl: team?.strTeamBadge ?? "")
+            
+            let team = leagueDetailsPresenter.getTeamWithIndex(index: indexPath.row)
+            
+            cell.displayTeamName(name: team.strTeam ?? "")
+            cell.displayTeamLogo(imageUrl: team.strTeamBadge ?? "")
+            
             return cell
+            
         }else {
+            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: UpcomingEventCollectionViewCell.self), for: indexPath) as! UpcomingEventCollectionViewCell
-            let upComingEvent = upComingEvents? [indexPath.row]
-            cell.displayEventDate(date: upComingEvent?.dateEvent ?? "")
-            cell.displayEventTime(time: upComingEvent?.strTime ?? "")
-            cell.displayEventThumbnail(imageUrl: upComingEvent?.strThumb ?? "")
-            cell.displayHomeTeamName(name: upComingEvent?.strHomeTeam ?? "")
-            cell.displayAwayTeamName(name: upComingEvent?.strAwayTeam ?? "")
+            
+            let upComingEvent = leagueDetailsPresenter.getUpcomingEventWithIndex(index: indexPath.row)
+            
+            cell.displayEventDate(date: upComingEvent.dateEvent ?? "")
+            cell.displayEventTime(time: upComingEvent.strTime ?? "")
+            cell.displayEventThumbnail(imageUrl: upComingEvent.strThumb ?? "")
+            cell.displayHomeTeamName(name: upComingEvent.strHomeTeam ?? "")
+            cell.displayAwayTeamName(name: upComingEvent.strAwayTeam ?? "")
     
             return cell
         }
     }
-    
-    
     
 }
 // MARK: - extension UICollectionViewDelegate
@@ -196,6 +165,7 @@ extension LeagueDetailsViewController : UICollectionViewDelegate{
         guard collectionView == teamsCollectionView else {return}
 
         let teamDetailsViewController = Storyboards.details.instance.instantiateViewController(withIdentifier: String(describing: TeamDetailsViewController.self)) as! TeamDetailsViewController
+        
         
         self.navigationController?.pushViewController(teamDetailsViewController, animated: true)
     }
@@ -211,5 +181,23 @@ extension LeagueDetailsViewController:UICollectionViewDelegateFlowLayout {
             return CGSize(width: self.view.bounds.width - 16 , height: upcomingEventsCollectionView.bounds.height)
 //          (latestEventsTableView.frame.width * 9 ) / 16
         }
+    }
+}
+
+extension LeagueDetailsViewController : LeagueDetailsViewControllerProtocol{
+    func getLeagueName() -> String {
+        return leagueName ?? ""
+    }
+    
+    func reloadUpcomingEventsCollectionView() {
+        self.upcomingEventsCollectionView.reloadData()
+    }
+    
+    func reloadLatestResultsTableView() {
+        self.latestEventsTableView.reloadData()
+    }
+    
+    func reloadTeamsCollectionView() {
+        self.teamsCollectionView.reloadData()
     }
 }
