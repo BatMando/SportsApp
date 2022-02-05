@@ -12,6 +12,7 @@ class SportsListViewController: BaseViewController {
     
     //MARK: - IBOutlet
     @IBOutlet weak var sportsCollectionView: UICollectionView!
+    @IBOutlet weak var styleButton: UIButton!
     
     
     //MARK: - Properties
@@ -36,6 +37,7 @@ class SportsListViewController: BaseViewController {
     //MARK: - IBActions
     @IBAction func styleBtn(_ sender: Any) {
         isGridActive = !isGridActive
+        styleButton.setImage(isGridActive ? #imageLiteral(resourceName: "listview_ic"):#imageLiteral(resourceName: "gridview_ic"), for: .normal)
         self.sportsCollectionView.reloadData()
     }
 }

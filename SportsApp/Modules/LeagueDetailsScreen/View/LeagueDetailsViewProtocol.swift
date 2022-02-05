@@ -9,8 +9,10 @@
 import Foundation
 
 protocol LeagueDetailsViewControllerProtocol : AnyObject{
-    func getLeagueName() -> String
     func reloadUpcomingEventsCollectionView()
     func reloadLatestResultsTableView()
     func reloadTeamsCollectionView()
+    func didAddedToFavouriteSuccessfully()
+    func didRemoveFromFavouriteSuccessfully()
+
 }

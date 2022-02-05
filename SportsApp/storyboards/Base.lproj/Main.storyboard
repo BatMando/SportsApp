@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qbd-cD-DW6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qbd-cD-DW6">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,8 +16,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ee-u0-m11">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Sports" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCF-9y-NXt">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <color key="textColor" name="accentColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wTw-Vr-Il6">
+                                        <rect key="frame" x="362" y="0.0" width="44" height="44"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="jmP-Kg-twg"/>
+                                        </constraints>
+                                        <state key="normal" title=" " image="gridview_ic"/>
+                                        <connections>
+                                            <action selector="styleBtn:" destination="sMl-io-qfV" eventType="touchUpInside" id="nrX-A7-jl6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="XCF-9y-NXt" firstAttribute="leading" secondItem="5ee-u0-m11" secondAttribute="leading" id="3I7-2c-gqf"/>
+                                    <constraint firstAttribute="height" constant="44" id="5ae-Ji-AGW"/>
+                                    <constraint firstAttribute="trailing" secondItem="XCF-9y-NXt" secondAttribute="trailing" id="7z0-Py-Hls"/>
+                                    <constraint firstAttribute="bottom" secondItem="wTw-Vr-Il6" secondAttribute="bottom" id="8th-CU-quf"/>
+                                    <constraint firstItem="XCF-9y-NXt" firstAttribute="top" secondItem="5ee-u0-m11" secondAttribute="top" id="JWH-Fl-seP"/>
+                                    <constraint firstAttribute="trailing" secondItem="wTw-Vr-Il6" secondAttribute="trailing" constant="8" id="KRX-hO-Gn8"/>
+                                    <constraint firstItem="wTw-Vr-Il6" firstAttribute="top" secondItem="5ee-u0-m11" secondAttribute="top" id="PHB-qz-l6T"/>
+                                    <constraint firstAttribute="bottom" secondItem="XCF-9y-NXt" secondAttribute="bottom" id="m0h-Ge-cqy"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gGo-a1-FI2">
-                                <rect key="frame" x="16" y="54" width="382" height="769"/>
+                                <rect key="frame" x="16" y="108" width="382" height="715"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="0.0" id="Jo4-jW-zfe">
                                     <size key="itemSize" width="128" height="128"/>
@@ -30,9 +63,12 @@
                         </subviews>
                         <color key="backgroundColor" name="MainBackground"/>
                         <constraints>
-                            <constraint firstItem="gGo-a1-FI2" firstAttribute="top" secondItem="Vi2-KZ-2Lo" secondAttribute="top" constant="10" id="1Nl-RY-mWj"/>
+                            <constraint firstItem="gGo-a1-FI2" firstAttribute="top" secondItem="5ee-u0-m11" secondAttribute="bottom" constant="20" id="8P3-mA-QqP"/>
+                            <constraint firstItem="5ee-u0-m11" firstAttribute="leading" secondItem="Vi2-KZ-2Lo" secondAttribute="leading" id="Cee-1c-xxj"/>
                             <constraint firstItem="Vi2-KZ-2Lo" firstAttribute="trailing" secondItem="gGo-a1-FI2" secondAttribute="trailing" constant="16" id="Egg-kB-xE8"/>
+                            <constraint firstItem="5ee-u0-m11" firstAttribute="top" secondItem="Vi2-KZ-2Lo" secondAttribute="top" id="MWf-1q-gNc"/>
                             <constraint firstItem="gGo-a1-FI2" firstAttribute="leading" secondItem="Vi2-KZ-2Lo" secondAttribute="leading" constant="16" id="Vfu-6x-29b"/>
+                            <constraint firstItem="Vi2-KZ-2Lo" firstAttribute="trailing" secondItem="5ee-u0-m11" secondAttribute="trailing" id="beA-cP-lYd"/>
                             <constraint firstItem="gGo-a1-FI2" firstAttribute="bottom" secondItem="Vi2-KZ-2Lo" secondAttribute="bottom" constant="10" id="kRS-jD-O7L"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Vi2-KZ-2Lo"/>
@@ -41,18 +77,16 @@
                     <navigationItem key="navigationItem" title="Sports App" id="RPX-4r-1ju">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="listview_ic" id="tDi-4n-0bF">
                             <color key="tintColor" name="accentColor"/>
-                            <connections>
-                                <action selector="styleBtn:" destination="sMl-io-qfV" id="HxF-cF-xCv"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="sportsCollectionView" destination="gGo-a1-FI2" id="p0V-FZ-SUv"/>
+                        <outlet property="styleButton" destination="wTw-Vr-Il6" id="eRX-OH-M5o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ap-oH-ABO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-570" y="656"/>
+            <point key="canvasLocation" x="-571.01449275362324" y="655.58035714285711"/>
         </scene>
         <!--Sports App-->
         <scene sceneID="cOI-5d-bv2">
@@ -78,6 +112,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Favourites" image="fav_ic_unfilled" id="alf-4P-SQ2"/>
                     <navigationItem key="navigationItem" title="Sports App" id="WQE-oz-UIF"/>
+                    <connections>
+                        <outlet property="leaguesTableView" destination="bpx-ke-rYb" id="Igd-ZA-pbZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w8I-Fh-Szc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -106,6 +143,7 @@
     </scenes>
     <resources>
         <image name="fav_ic_unfilled" width="29.5" height="28.5"/>
+        <image name="gridview_ic" width="30" height="30"/>
         <image name="listview_ic" width="36" height="29.5"/>
         <image name="sports_ic" width="41" height="26"/>
         <namedColor name="MainBackground">

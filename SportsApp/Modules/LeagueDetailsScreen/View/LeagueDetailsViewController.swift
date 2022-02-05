@@ -16,7 +16,6 @@ class LeagueDetailsViewController: UIViewController {
     @IBOutlet weak var LeagueTitleLabel: UILabel!
     
     // MARK: - Properties
-    var leagueName : String?
     var leagueDetailsPresenter : LeagueDetailsPresenterProtocol!
     
     // MARK: - Life Cycle
@@ -24,12 +23,12 @@ class LeagueDetailsViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         configureCollectionViews()
-        self.leagueDetailsPresenter = LeagueDetailsPresenter(LeagueDetailsView: self)
+       
     }
     
     // MARK: - Functions
     private func configureUI () {
-        self.LeagueTitleLabel.text = leagueName
+        self.LeagueTitleLabel.text = leagueDetailsPresenter.getLeagueName()
     }
     
     private func configureCollectionViews(){
@@ -84,6 +83,7 @@ class LeagueDetailsViewController: UIViewController {
     
     @IBAction func favouriteButtonPressed(_ sender: UIButton) {
         print("favourites button pressed")
+        leagueDetailsPresenter.addLeagueToFavourite()
     }
 }
 // MARK: - extension UITableViewDataSource
@@ -166,7 +166,8 @@ extension LeagueDetailsViewController : UICollectionViewDelegate{
 
         let teamDetailsViewController = Storyboards.details.instance.instantiateViewController(withIdentifier: String(describing: TeamDetailsViewController.self)) as! TeamDetailsViewController
         
-        
+        let teamDetailsPresenter = TeamDetailsPresenter(view: teamDetailsViewController as TeamDetailsViewControllerProtocol , teamModel: leagueDetailsPresenter.getTeamWithIndex(index: indexPath.row))
+       teamDetailsViewController.teamDetailsPresenter = teamDetailsPresenter
         self.navigationController?.pushViewController(teamDetailsViewController, animated: true)
     }
     
@@ -185,9 +186,17 @@ extension LeagueDetailsViewController:UICollectionViewDelegateFlowLayout {
 }
 
 extension LeagueDetailsViewController : LeagueDetailsViewControllerProtocol{
-    func getLeagueName() -> String {
-        return leagueName ?? ""
+    
+    
+    func didRemoveFromFavouriteSuccessfully() {
+        //update UI To gray
     }
+    
+    func didAddedToFavouriteSuccessfully() {
+        //update UI To Red
+    }
+    
+  
     
     func reloadUpcomingEventsCollectionView() {
         self.upcomingEventsCollectionView.reloadData()
