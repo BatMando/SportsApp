@@ -10,4 +10,5 @@ import Foundation
 protocol FavouriteLeaguesPresenterProtocol {
     func getDataCount()->Int
     func getItemAtIndex(index : Int)->FavouriteLeagueModel?
+    func getFavouriteLeagues()
 }

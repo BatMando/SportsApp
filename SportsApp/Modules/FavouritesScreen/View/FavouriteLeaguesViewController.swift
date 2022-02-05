@@ -26,6 +26,12 @@ class FavouriteLeaguesViewController: BaseViewController {
        // presenter?.setViewDelegate(delegate: self)
        // presenter?.getLeagues()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.getFavouriteLeagues()
+    }
+    
       // MARK: - Methods
     func configureTableView () {
          self.leaguesTableView.register(UINib(nibName: String(describing: LeaguesTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: LeaguesTableViewCell.self))
@@ -51,11 +57,28 @@ extension FavouriteLeaguesViewController : UITableViewDelegate,UITableViewDataSo
         }
         return UITableViewCell()
     }
+    
+    
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      //  presenter?.navigateToLeagueDetailsViewController(league: presenter.get)
+        //presenter?.navigateToLeagueDetailsViewController(league: presenter.ge)
+        let leagueDetailsViewController = Storyboards.details.instance.instantiateViewController(withIdentifier: String(describing: LeagueDetailsViewController.self)) as! LeagueDetailsViewController
+        
+        let favouriteLeague = presenter.getItemAtIndex(index: indexPath.row)
+        
+        let leagueDetailsPresenter = LeagueDetailsPresenter(LeagueDetailsView: leagueDetailsViewController, league: LeagueModel(idLeague: favouriteLeague?.idLeague, strLeague: favouriteLeague?.strLeague, strSport: "", strLeagueAlternate: "", strCurrentSeason: "", strYoutube: favouriteLeague?.strYoutube, strBadge: favouriteLeague?.strBadge))
+        
+        leagueDetailsViewController.leagueDetailsPresenter = leagueDetailsPresenter
+        
+        
+        let navCon = UINavigationController(rootViewController: leagueDetailsViewController)
+        navCon.modalPresentationStyle = .fullScreen
+        navCon.isNavigationBarHidden = true
+        self.present(navCon, animated: true, completion: nil)
+        
     }
     
 }
