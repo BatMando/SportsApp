@@ -14,25 +14,33 @@ class LeaguesListViewController: UIViewController {
     // MARK: - IBOutlet
     @IBOutlet weak var leaguesTableView: UITableView!
     
+    @IBOutlet weak var sportTilteLabel: UILabel!
     // MARK: - Properties
     
     var data : [LeagueModel] = []
-    private let presenter = LeaguesListViewPresenter ()
+    var presenter : LeaguesListViewPresenter?
 //    let appearance = UINavigationBarAppearance()
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Leagues"
+        configureUI ()
         configureTableView()
-        presenter.setViewDelegate(delegate: self)
-        presenter.getLeagues()
+        presenter?.setViewDelegate(delegate: self)
+        presenter?.getLeagues()
     }
     // MARK: - Methods
+    private  func configureUI(){
+        self.sportTilteLabel.text = presenter?.sportName
+    }
     func configureTableView () {
         self.leaguesTableView.register(UINib(nibName: String(describing: LeaguesTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: LeaguesTableViewCell.self))
         self.leaguesTableView.delegate = self
         self.leaguesTableView.dataSource = self
+    }
+    // MARK: - IBActions
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 // MARK: - Tableview delegate and datasource
@@ -43,6 +51,7 @@ extension LeaguesListViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: LeaguesTableViewCell.self), for: indexPath) as? LeaguesTableViewCell {
             cell.model = self.data[indexPath.row]
+            cell.selectionStyle = .none
             return cell
         }
         return UITableViewCell()
@@ -51,7 +60,7 @@ extension LeaguesListViewController : UITableViewDelegate,UITableViewDataSource{
         return 70
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter.navigateToLeagueDetailsViewController(league: data[indexPath.row])
+        presenter?.navigateToLeagueDetailsViewController(league: data[indexPath.row])
     }
     
 }
@@ -59,7 +68,8 @@ extension LeaguesListViewController : UITableViewDelegate,UITableViewDataSource{
 
 extension LeaguesListViewController :LeaguesListViewPresenterDelegate{
     func presentLeagues(data: [LeagueModel]) {
-        self.data=data
+        self.data=data.reversed()
+        
     }
     
     func renderTableView() {

@@ -42,7 +42,8 @@ class SportsListViewController: BaseViewController {
 //MARK: - UICollectionViewDelegate
 extension SportsListViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigateToLeaguesViewController(withSportId: 0)
+        navigateToLeaguesViewController(withSportName: presenter?.getSport(atIndex: indexPath).strSport ?? " ")
+
     }
 }
 

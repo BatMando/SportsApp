@@ -31,7 +31,7 @@ class SportsListPresenter : SportsPresenter{
     
     
     func getSports(){
-        NetworkManager().request(fromEndpoint: .allSports, httpMethod: .get) { [weak self] (result:Result<GetAllSportsResponseModel, Error>) in
+        NetworkManager().request(fromEndpoint: .allSports, httpMethod: .get,parameters: nil) { [weak self] (result:Result<GetAllSportsResponseModel, Error>) in
             switch result {
             case .success(let response):
                 print("aaa")
