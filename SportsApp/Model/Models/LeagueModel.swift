@@ -15,6 +15,5 @@ struct LeagueModel:Codable {
     var strCurrentSeason   : String?
     var strYoutube         : String?
     var strBadge           : String?
-
     
 }

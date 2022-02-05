@@ -26,6 +26,17 @@ class LeaguesTableViewCell: UITableViewCell {
             self.leagueImage.kf.setImage(with: URL(string:model.strBadge ?? "" ))
         }
     }
+    
+    
+    func displayLeagueName(name : String){
+        self.leagueName.text = name
+    }
+    
+    func displayCellImage(imageUrl : String){
+        self.leagueImage.kf.setImage(with: URL(string: imageUrl ))
+    }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

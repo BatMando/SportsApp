@@ -6,20 +6,25 @@
 //  Copyright © 2022 admin. All rights reserved.
 //
 import Foundation
-
+import CoreData
 class LeagueDetailsPresenter :LeagueDetailsPresenterProtocol{
-        
+    
+    
+    
+    
+    
     //MARK: - Properties
+    var league: LeagueModel
     var teams : [TeamModel]?
     var upcomingEvents : [EventModel]?
     var latestResults : [EventModel]?
     
     weak var LeagueDetailsView:LeagueDetailsViewControllerProtocol!
     
-    init(LeagueDetailsView:LeagueDetailsViewControllerProtocol){
+    init(LeagueDetailsView:LeagueDetailsViewControllerProtocol, league : LeagueModel){
         
         self.LeagueDetailsView = LeagueDetailsView
-        
+        self.league = league
         getTeams()
         getUpcomingEvents()
         getLatestResults()
@@ -27,21 +32,44 @@ class LeagueDetailsPresenter :LeagueDetailsPresenterProtocol{
     }
     
     //MARK: - Functions
+    func getLeagueName() -> String {
+        return league.strLeague ?? ""
+    }
+    
+    
+    
     func getUpcomingEvents() {
-        NetworkManager().request(fromEndpoint: .events, httpMethod: .post,parameters: ["e":("\(LeagueDetailsView.getLeagueName())_2022-02-08")]) { [weak self](result:Result<GetAllUpComingEventsResponseModel, Error>) in
+        guard let leagueName = league.strLeague else {
+            return
+        }
+        NetworkManager().request(fromEndpoint: .events, httpMethod: .post,parameters: ["e":("\(leagueName)_2022-02-08")]) { [weak self](result:Result<GetAllUpComingEventsResponseModel, Error>) in
             switch result {
             case .success(let response):
                 self?.upcomingEvents = response.event
-//              self?.delegate?.presentLeagues(data: leagues)
+                //              self?.delegate?.presentLeagues(data: leagues)
                 DispatchQueue.main.async {
-//                  self?.delegate?.renderTableView()
+                    //                  self?.delegate?.renderTableView()
                     self?.LeagueDetailsView.reloadUpcomingEventsCollectionView()
                 }
-//              print(response.leagues.count)
+            //              print(response.leagues.count)
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    func addLeagueToFavourite() {
+        guard let entity = NSEntityDescription.entity(forEntityName: "FavouriteLeagueModel", in: DataManager.context) else {
+            fatalError("Failed to decode User")
+        }
+        let newleague = FavouriteLeagueModel(entity: entity, insertInto: DataManager.context)
+        newleague.idLeague = league.idLeague
+        newleague.strLeague = league.strLeague
+        newleague.strBadge = league.strBadge
+        newleague.strYoutube = league.strYoutube
+        DataManager.saveContext()
+        LeagueDetailsView.didAddedToFavouriteSuccessfully()
+        
     }
     
     func getUpcomingEventWithIndex(index: Int) -> EventModel {
@@ -53,16 +81,19 @@ class LeagueDetailsPresenter :LeagueDetailsPresenterProtocol{
     }
     
     func getLatestResults() {
-        NetworkManager().request(fromEndpoint: .events, httpMethod: .post,parameters: ["e":("\(LeagueDetailsView.getLeagueName())_2022-01-15")]) { [weak self](result:Result<GetAllLatestEventsResponseModel, Error>) in
+        guard let leagueName = league.strLeague else {
+            return
+        }
+        NetworkManager().request(fromEndpoint: .events, httpMethod: .post,parameters: ["e":("\(leagueName)_2022-01-15")]) { [weak self](result:Result<GetAllLatestEventsResponseModel, Error>) in
             switch result {
             case .success(let response):
                 self?.latestResults = response.event
-//              self?.delegate?.presentLeagues(data: leagues)
+                //              self?.delegate?.presentLeagues(data: leagues)
                 DispatchQueue.main.async {
-//                  self?.delegate?.renderTableView()
+                    //                  self?.delegate?.renderTableView()
                     self?.LeagueDetailsView.reloadLatestResultsTableView()
                 }
-                //print(self?.latestResults?.count)
+            //print(self?.latestResults?.count)
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -78,7 +109,10 @@ class LeagueDetailsPresenter :LeagueDetailsPresenterProtocol{
     }
     
     func getTeams() {
-        NetworkManager().request(fromEndpoint: .allTeams, httpMethod: .post,parameters: ["l":LeagueDetailsView.getLeagueName()]) { [weak self](result:Result<GetAllTeamsResponseModel, Error>) in
+        guard let leagueName = league.strLeague else {
+            return
+        }
+        NetworkManager().request(fromEndpoint: .allTeams, httpMethod: .post,parameters: ["l":leagueName]) { [weak self](result:Result<GetAllTeamsResponseModel, Error>) in
             switch result {
                 
             case .success(let response):
@@ -88,7 +122,7 @@ class LeagueDetailsPresenter :LeagueDetailsPresenterProtocol{
                     //self?.delegate?.renderTableView()
                     self?.LeagueDetailsView.reloadTeamsCollectionView()
                 }
-                //print("******\(self?.teams?.count)")
+            //print("******\(self?.teams?.count)")
             case .failure(let error):
                 print(error.localizedDescription)
                 
@@ -103,5 +137,5 @@ class LeagueDetailsPresenter :LeagueDetailsPresenterProtocol{
     func getTeamsCount() -> Int {
         return self.teams?.count ?? 0
     }
-       
+    
 }

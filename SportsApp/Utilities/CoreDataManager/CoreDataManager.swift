@@ -19,13 +19,8 @@ class DataManager {
     // MARK: - Core Data stack
 
     static var persistentContainer: NSPersistentContainer = {
-          /*
-           The persistent container for the application. This implementation
-           creates and returns a container, having loaded the store for the
-           application to it. This property is optional since there are legitimate
-           error conditions that could cause the creation of the store to fail.
-          */
-          let container = NSPersistentContainer(name: "CoreDataDemo")
+     
+          let container = NSPersistentContainer(name: "FavouriteLeagueModel")
           container.loadPersistentStores(completionHandler: { (storeDescription, error) in
               if let error = error as NSError? {
                   // Replace this implementation with code to handle the error appropriately.
@@ -62,16 +57,16 @@ static func saveContext () {
           }
       }
     
-  /*
-  static  func fetchFromStorage() -> [Movie]? {
+
+  static  func fetchFromStorage() -> [FavouriteLeagueModel]? {
            let managedObjectContext = persistentContainer.viewContext
-           let fetchRequest = NSFetchRequest<Movie>(entityName: "Movie")
+           let fetchRequest = NSFetchRequest<FavouriteLeagueModel>(entityName: "FavouriteLeagueModel")
 //           let sortDescriptor1 = NSSortDescriptor(key: "role", ascending: true)
 //           let sortDescriptor2 = NSSortDescriptor(key: "username", ascending: true)
         //   fetchRequest.sortDescriptors = [sortDescriptor1, sortDescriptor2]
            do {
-               let movies = try managedObjectContext.fetch(fetchRequest)
-               return movies
+               let leagues = try managedObjectContext.fetch(fetchRequest)
+               return leagues
            } catch let error {
                print(error)
                return nil
@@ -80,7 +75,7 @@ static func saveContext () {
 
    static func clearStorage() {
           let managedObjectContext = persistentContainer.viewContext
-          let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Movie")
+          let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavouriteLeagueModel")
           let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
           do {
               try managedObjectContext.execute(batchDeleteRequest)
@@ -93,9 +88,9 @@ static func saveContext () {
       }
     
     
-    static func deleteMovie(withID: String) {
-        let fetchRequest: NSFetchRequest<Movie> = Movie.fetchRequest()
-        fetchRequest.predicate = NSPredicate.init(format: "id=='\(withID)'")
+    static func deleteLeague(withID: String) {
+        let fetchRequest: NSFetchRequest<FavouriteLeagueModel> = FavouriteLeagueModel.fetchRequest()
+        fetchRequest.predicate = NSPredicate.init(format: "idLeague=='\(withID)'")
         if let result = try? DataManager.context.fetch(fetchRequest) {
             for object in result {
                 DataManager.context.delete(object)
@@ -103,5 +98,5 @@ static func saveContext () {
         }
         self.saveContext()
     }
-    */
+    
 }

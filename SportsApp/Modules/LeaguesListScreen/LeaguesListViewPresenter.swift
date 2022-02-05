@@ -52,7 +52,8 @@ class LeaguesListViewPresenter {
     }
     public func navigateToLeagueDetailsViewController(league: LeagueModel){
         let leagueDetailsViewController = Storyboards.details.instance.instantiateViewController(withIdentifier: String(describing: LeagueDetailsViewController.self)) as! LeagueDetailsViewController
-        leagueDetailsViewController.leagueName = league.strLeague
+        let leagueDetailsPresenter = LeagueDetailsPresenter(LeagueDetailsView: leagueDetailsViewController, league: league)
+        leagueDetailsViewController.leagueDetailsPresenter = leagueDetailsPresenter
         leagueDetailsViewController.modalPresentationStyle = .fullScreen
         delegate?.navigationController?.pushViewController(leagueDetailsViewController, animated: true)
 //        delegate?.navigationController?.present(leagueDetailsViewController, animated: true, completion: nil)

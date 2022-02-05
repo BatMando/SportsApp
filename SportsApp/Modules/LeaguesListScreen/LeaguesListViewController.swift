@@ -13,9 +13,8 @@ class LeaguesListViewController: UIViewController {
     
     // MARK: - IBOutlet
     @IBOutlet weak var leaguesTableView: UITableView!
-    
     @IBOutlet weak var sportTilteLabel: UILabel!
-    // MARK: - Properties
+    
     
     var data : [LeagueModel] = []
     var presenter : LeaguesListViewPresenter?
