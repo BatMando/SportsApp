@@ -83,7 +83,8 @@ class LeagueDetailsViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
+//        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func favouriteButtonPressed(_ sender: UIButton) {
