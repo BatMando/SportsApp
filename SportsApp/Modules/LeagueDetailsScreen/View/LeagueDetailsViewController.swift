@@ -15,20 +15,25 @@ class LeagueDetailsViewController: UIViewController {
     @IBOutlet weak var upcomingEventsCollectionView: UICollectionView!
     @IBOutlet weak var LeagueTitleLabel: UILabel!
     
+    @IBOutlet weak var favouriteBtn: UIButton!
     // MARK: - Properties
     var leagueDetailsPresenter : LeagueDetailsPresenterProtocol!
-    
+    var favouriteStatus = false
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         configureCollectionViews()
-       
     }
     
     // MARK: - Functions
     private func configureUI () {
         self.LeagueTitleLabel.text = leagueDetailsPresenter.getLeagueName()
+        changeFavouriteState()
+    }
+    private func changeFavouriteState(){
+        self.favouriteStatus = leagueDetailsPresenter.checkIsFavourite()
+        favouriteBtn.setImage(self.favouriteStatus ? #imageLiteral(resourceName: "fav_ic_filled"):#imageLiteral(resourceName: "fav_ic_unfilled"), for: .normal)
     }
     
     private func configureCollectionViews(){
@@ -83,7 +88,15 @@ class LeagueDetailsViewController: UIViewController {
     
     @IBAction func favouriteButtonPressed(_ sender: UIButton) {
         print("favourites button pressed")
-        leagueDetailsPresenter.addLeagueToFavourite()
+        if favouriteStatus {
+            leagueDetailsPresenter.removeFromFavourites(id: leagueDetailsPresenter.getLeaugeID())
+            changeFavouriteState()
+        }
+        else{
+            leagueDetailsPresenter.addLeagueToFavourite()
+            changeFavouriteState()
+        }
+        
     }
 }
 // MARK: - extension UITableViewDataSource

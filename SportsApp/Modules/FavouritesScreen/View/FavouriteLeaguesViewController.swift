@@ -23,6 +23,7 @@ class FavouriteLeaguesViewController: BaseViewController {
         presenter = FavouriteLeaguesPresenter(view: self)
 
         configureTableView()
+        
        // presenter?.setViewDelegate(delegate: self)
        // presenter?.getLeagues()
     }
@@ -78,6 +79,24 @@ extension FavouriteLeaguesViewController : UITableViewDelegate,UITableViewDataSo
         navCon.modalPresentationStyle = .fullScreen
         navCon.isNavigationBarHidden = true
         self.present(navCon, animated: true, completion: nil)
+        
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        let alert = UIAlertController(title: " Remove League From Favourites", message: "Are you sure you want to Unfavourite this league \nchoose delete or cancel", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {action in
+            let favouriteLeague = self.presenter.getItemAtIndex(index: indexPath.row)
+            self.leaguesTableView.beginUpdates()
+            DataManager.deleteLeague(withID: favouriteLeague?.idLeague ?? "")
+            self.presenter.daleteItem(indexPath: indexPath)
+//            self.leaguesTableView.reloadData()
+            self.leaguesTableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
+            self.leaguesTableView.endUpdates()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+            print("Cancel is pressed")
+        }))
+        self.present(alert, animated: true, completion: nil)
         
     }
     
