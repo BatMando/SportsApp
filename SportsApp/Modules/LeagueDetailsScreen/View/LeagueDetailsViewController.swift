@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class LeagueDetailsViewController: UIViewController {
+class LeagueDetailsViewController: BaseViewController {
     
     // MARK: - IBOutlet
     @IBOutlet weak var teamsCollectionView: UICollectionView!
@@ -16,9 +16,11 @@ class LeagueDetailsViewController: UIViewController {
     @IBOutlet weak var LeagueTitleLabel: UILabel!
     
     @IBOutlet weak var favouriteBtn: UIButton!
+    
     // MARK: - Properties
     var leagueDetailsPresenter : LeagueDetailsPresenterProtocol!
     var favouriteStatus = false
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,7 @@ class LeagueDetailsViewController: UIViewController {
         self.LeagueTitleLabel.text = leagueDetailsPresenter.getLeagueName()
         changeFavouriteState()
     }
+    
     private func changeFavouriteState(){
         self.favouriteStatus = leagueDetailsPresenter.checkIsFavourite()
         favouriteBtn.setImage(self.favouriteStatus ? #imageLiteral(resourceName: "fav_ic_filled"):#imageLiteral(resourceName: "fav_ic_unfilled"), for: .normal)
@@ -46,20 +49,8 @@ class LeagueDetailsViewController: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter.string(from: date)
-
-    }
-    /*public func getTeams(){
-        
         
     }
-    public func getUpcomingEvents(){
-//        ["e":("\(leagueName!)_\(getCurrentDate())")]
-        
-    }
-    public func getLatestEvents(){
-//        ["e":("\(leagueName!)_\(getCurrentDate())")]
-        
-    }*/
     
     private func setupCollectionViewsDataSource(){
         teamsCollectionView.dataSource          = self
@@ -79,12 +70,14 @@ class LeagueDetailsViewController: UIViewController {
         
         let teamNib = UINib(nibName: String(describing: TeamCollectionViewCell.self), bundle: nil)
         teamsCollectionView.register(teamNib, forCellWithReuseIdentifier: String(describing: TeamCollectionViewCell.self) )
+
     }
+
     // MARK: - IBActions
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
-//        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func favouriteButtonPressed(_ sender: UIButton) {
@@ -100,6 +93,7 @@ class LeagueDetailsViewController: UIViewController {
         
     }
 }
+
 // MARK: - extension UITableViewDataSource
 extension LeagueDetailsViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -137,9 +131,15 @@ extension LeagueDetailsViewController : UITableViewDelegate {
 extension LeagueDetailsViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == teamsCollectionView {
-            return leagueDetailsPresenter.getTeamsCount()
+            let count = leagueDetailsPresenter.getTeamsCount()
+            self.teamsCollectionView.backgroundView = count == 0 ? self.getHeaderView(width: Int(teamsCollectionView.frame.width)) : nil
+            return count
         }else {
-            return leagueDetailsPresenter.getUpcomingEventsCount()
+            
+            let count = leagueDetailsPresenter.getUpcomingEventsCount()
+            self.upcomingEventsCollectionView.backgroundView = count == 0 ? self.getHeaderView(width: Int(upcomingEventsCollectionView.frame.width)) : nil
+            return count
+
         }
     }
     
@@ -167,7 +167,7 @@ extension LeagueDetailsViewController : UICollectionViewDataSource {
             cell.displayEventThumbnail(imageUrl: upComingEvent.strThumb ?? "")
             cell.displayHomeTeamName(name: upComingEvent.strHomeTeam ?? "")
             cell.displayAwayTeamName(name: upComingEvent.strAwayTeam ?? "")
-    
+            
             return cell
         }
     }
@@ -177,25 +177,35 @@ extension LeagueDetailsViewController : UICollectionViewDataSource {
 extension LeagueDetailsViewController : UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard collectionView == teamsCollectionView else {return}
-
+        
         let teamDetailsViewController = Storyboards.details.instance.instantiateViewController(withIdentifier: String(describing: TeamDetailsViewController.self)) as! TeamDetailsViewController
         
         let teamDetailsPresenter = TeamDetailsPresenter(view: teamDetailsViewController as TeamDetailsViewControllerProtocol , teamModel: leagueDetailsPresenter.getTeamWithIndex(index: indexPath.row))
-       teamDetailsViewController.teamDetailsPresenter = teamDetailsPresenter
+        teamDetailsViewController.teamDetailsPresenter = teamDetailsPresenter
         self.navigationController?.pushViewController(teamDetailsViewController, animated: true)
     }
+    
     
 }
 // MARK: - extension UICollectionViewDelegateFlowLayout
 
 extension LeagueDetailsViewController:UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == teamsCollectionView {
             return CGSize(width: 160, height: teamsCollectionView.bounds.height)
         }else{
             return CGSize(width: self.view.bounds.width - 16 , height: upcomingEventsCollectionView.bounds.height)
-//          (latestEventsTableView.frame.width * 9 ) / 16
+
         }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        self.getHeaderView(width: Int(tableView.frame.width))
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        leagueDetailsPresenter.getTeamsCount() == 0 ? 200 : 0
     }
 }
 
@@ -210,7 +220,7 @@ extension LeagueDetailsViewController : LeagueDetailsViewControllerProtocol{
         //update UI To Red
     }
     
-  
+    
     
     func reloadUpcomingEventsCollectionView() {
         self.upcomingEventsCollectionView.reloadData()

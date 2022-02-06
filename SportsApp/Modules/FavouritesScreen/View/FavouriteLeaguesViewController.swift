@@ -58,8 +58,13 @@ extension FavouriteLeaguesViewController : UITableViewDelegate,UITableViewDataSo
         }
         return UITableViewCell()
     }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        presenter.getDataCount() == 0 ? 200 : 0
+    }
     
-    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+          self.getHeaderView(width: Int(tableView.frame.width))
+      }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
