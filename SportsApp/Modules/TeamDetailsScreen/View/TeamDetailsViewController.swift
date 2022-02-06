@@ -28,36 +28,60 @@ class TeamDetailsViewController: UIViewController ,TeamDetailsViewControllerProt
     
     // MARK: - Methods
     func displayTeamDetails(){
-         team = teamDetailsPresenter.getTeam()
+        team = teamDetailsPresenter.getTeam()
         guard let team = team else {return}
         teamNameLabell.text = team.strTeam
         stadiumNameLabel.text = team.strStadium
-        self.teamLogoImageView.kf.setImage(with: URL(string: team.strTeamBadge ?? "" ))
-        self.teamGersyImageView.kf.setImage(with: URL(string: team.strTeamJersey ?? ""))
-        self.stadiumImageView.kf.setImage(with: URL(string: team.strStadiumThumb ?? "" ))
+        
+        if team.strTeamBadge != nil {
+            self.teamLogoImageView.kf.setImage(with: URL(string: team.strTeamBadge ?? "" ))
+        }
+        else {
+            self.teamLogoImageView.image = UIImage(named: "logoPlaceHolder")
+        }
+        
+        
+        if team.strTeamJersey != nil{
+            self.teamGersyImageView.kf.setImage(with: URL(string: team.strTeamJersey ?? "" ))
+        }
+        else {
+            self.teamGersyImageView.image = UIImage(named: "kitplaceHolder")
+        }
+        
+        
+        if team.strStadiumThumb != nil {
+            self.stadiumImageView.kf.setImage(with: URL(string: team.strStadiumThumb ?? "" ))
+            
+        }
+        else {
+            self.stadiumImageView.image = UIImage(named: "stadiumPlaceHolder")
+            
+        }
+        
+        
     }
     func openLink(url : String?){
         guard let officialWebSite = url else{return}
-
-             guard let appURL = URL(string:"https://\(officialWebSite)") else {return}
-             if UIApplication.shared.canOpenURL(appURL as URL) {
-                      if #available(iOS 10.0, *) {
-                          UIApplication.shared.open(appURL as URL, options:
-                      [:], completionHandler: nil)
-                      }
-                      else { UIApplication.shared.openURL(appURL as URL)
-                      }
-                  }
-             else {
-                      //redirect to safari because the user doesn't have
-                       // Instagram
-                      if #available(iOS 10.0, *) {
-                          UIApplication.shared.open(appURL as URL, options:
-                          [:], completionHandler: nil)
-                      }
-                      else {UIApplication.shared.openURL(appURL as URL)
-                      }
-             }
+        
+        guard let appURL = URL(string:"https://\(officialWebSite)") else {return}
+        if UIApplication.shared.canOpenURL(appURL as URL) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(appURL as URL, options:
+                                            [:], completionHandler: nil)
+            }
+            else { UIApplication.shared.openURL(appURL as URL)
+            }
+        }
+        else {
+            //redirect to safari because the user doesn't have
+            // Instagram
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(appURL as URL, options:
+                                            [:], completionHandler: nil)
+            }
+            else {UIApplication.shared.openURL(appURL as URL)
+            }
+        }
         
         
     }
@@ -69,10 +93,10 @@ class TeamDetailsViewController: UIViewController ,TeamDetailsViewControllerProt
     
     @IBAction func navigateToOfficialWebsite(_ sender: UIButton) {
         openLink(url: team?.strWebsite)
-
-//        guard let officialWebSite = team?.strWebsite else{return}
-//        if let url = URL(string: "https://\(officialWebSite)") {
-//        UIApplication.shared.open(url)}
+        
+        //        guard let officialWebSite = team?.strWebsite else{return}
+        //        if let url = URL(string: "https://\(officialWebSite)") {
+        //        UIApplication.shared.open(url)}
     }
     
     @IBAction func visitFacebookPage(_ sender: UIButton) {
@@ -85,7 +109,7 @@ class TeamDetailsViewController: UIViewController ,TeamDetailsViewControllerProt
     
     @IBAction func visitInstagramPage(_ sender: UIButton) {
         openLink(url: team?.strInstagram)
-
+        
     }
     
     @IBAction func visitYoutubeChannel(_ sender: UIButton) {

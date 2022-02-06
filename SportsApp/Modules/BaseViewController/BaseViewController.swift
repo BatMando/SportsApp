@@ -7,21 +7,19 @@
 //
 
 import UIKit
+import Network
 
 class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-//        self.navigationController?.navigationBar.tintColor = UIColor.white
-//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        self.navigationController?.navigationBar.shadowImage = UIImage()
-//        self.navigationController?.navigationBar.barStyle = .black
-
+        NotificationCenter.default.addObserver(self, selector: #selector(displayNetworkAlert), name: Notification.Name.init(rawValue: "NotInternetConnection"), object: nil)
     }
-    
-    
+   @objc func displayNetworkAlert(){
+        let noNetworkVC = Storyboards.main.instance.instantiateViewController(withIdentifier: "NoInternetConnectionViewController") as! NoInternetConnectionViewController
+        noNetworkVC.modalPresentationStyle = .currentContext
+        self.present(noNetworkVC, animated: true, completion: nil)
+    }
     func navigateToLeaguesViewController(withSportName : String){
         let leaguesViewController = Storyboards.details.instance.instantiateViewController(withIdentifier: String(describing: LeaguesListViewController.self)) as! LeaguesListViewController
         leaguesViewController.presenter = LeaguesListViewPresenter(sportName: withSportName)
@@ -29,7 +27,7 @@ class BaseViewController: UIViewController {
         navCon.modalPresentationStyle = .fullScreen
         navCon.isNavigationBarHidden = true
         self.present(navCon, animated: true, completion: nil)
-//        self.navigationController?.pushViewController(navCon, animated: true)
+        //        self.navigationController?.pushViewController(navCon, animated: true)
     }
     
 }
