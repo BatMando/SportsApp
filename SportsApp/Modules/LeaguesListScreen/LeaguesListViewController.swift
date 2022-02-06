@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LeaguesListViewController: UIViewController {
+class LeaguesListViewController: BaseViewController {
     
     
     // MARK: - IBOutlet
@@ -73,6 +73,15 @@ extension LeaguesListViewController :LeaguesListViewPresenterDelegate{
     
     func renderTableView() {
         self.leaguesTableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        self.getHeaderView(width:Int(tableView.frame.width))
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        self.data.count == 0 ? 200 : 0
     }
     
 }
