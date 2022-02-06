@@ -98,5 +98,19 @@ static func saveContext () {
         }
         self.saveContext()
     }
+    static func checkFavouriteStateForLeague(withID: String) -> Bool {
+         let fetchRequest: NSFetchRequest<FavouriteLeagueModel> = FavouriteLeagueModel.fetchRequest()
+         fetchRequest.predicate = NSPredicate.init(format: "idLeague=='\(withID)'")
+         if let result = try? DataManager.context.fetch(fetchRequest) {
+ //            for object in result {
+             if result.count > 0 {
+                 print("true")
+                     return true
+                 }
+ //            }
+         }
+         return false
+ //        self.saveContext()
+     }
     
 }

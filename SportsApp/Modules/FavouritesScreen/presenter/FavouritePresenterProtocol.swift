@@ -11,4 +11,5 @@ protocol FavouriteLeaguesPresenterProtocol {
     func getDataCount()->Int
     func getItemAtIndex(index : Int)->FavouriteLeagueModel?
     func getFavouriteLeagues()
+    func daleteItem (indexPath : IndexPath)
 }

@@ -20,7 +20,9 @@ class FavouriteLeaguesPresenter : FavouriteLeaguesPresenterProtocol {
         favouriteLeagues = DataManager.fetchFromStorage()
         view.displayFavouriteLeagues()
     }
-    
+    func daleteItem (indexPath : IndexPath){
+        favouriteLeagues?.remove(at: indexPath.row)
+    }
     func getDataCount() -> Int {
         print(favouriteLeagues?.count)
         return favouriteLeagues?.count ?? 0

@@ -35,8 +35,15 @@ class LeagueDetailsPresenter :LeagueDetailsPresenterProtocol{
     func getLeagueName() -> String {
         return league.strLeague ?? ""
     }
-    
-    
+    func getLeaugeID () -> String {
+        return league.idLeague ?? ""
+    }
+    func checkIsFavourite() -> Bool{
+        if DataManager.checkFavouriteStateForLeague(withID: league.idLeague ?? "") {
+              return true
+          }
+          return false
+      }
     
     func getUpcomingEvents() {
         guard let leagueName = league.strLeague else {
@@ -70,6 +77,9 @@ class LeagueDetailsPresenter :LeagueDetailsPresenterProtocol{
         DataManager.saveContext()
         LeagueDetailsView.didAddedToFavouriteSuccessfully()
         
+    }
+    func removeFromFavourites(id : String){
+        DataManager.deleteLeague(withID: id)
     }
     
     func getUpcomingEventWithIndex(index: Int) -> EventModel {
