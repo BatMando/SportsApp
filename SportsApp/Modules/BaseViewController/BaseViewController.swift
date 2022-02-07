@@ -8,6 +8,7 @@
 
 import UIKit
 import Network
+import Toaster
 
 class BaseViewController: UIViewController {
     
@@ -65,7 +66,7 @@ class BaseViewController: UIViewController {
     
     func openLink(url : String?){
         guard let officialWebSite = url else{
-            //Toast(text: "Hello, world!", duration: Delay.long)
+            return
         }
         
         guard let appURL = URL(string:"https://\(officialWebSite)") else {return}

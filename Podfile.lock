@@ -5,12 +5,14 @@ PODS:
   - Kingfisher/Core (5.15.8)
   - lottie-ios (3.3.0)
   - Toast-Swift (5.0.1)
+  - Toaster (2.3.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.9.1)
   - Kingfisher (~> 5.0)
   - lottie-ios
   - Toast-Swift (~> 5.0.1)
+  - Toaster
 
 SPEC REPOS:
   trunk:
@@ -18,13 +20,15 @@ SPEC REPOS:
     - Kingfisher
     - lottie-ios
     - Toast-Swift
+    - Toaster
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
+  Toaster: c3473963c78e8cabbf6ea6f11ad0fdaae6f54987
 
-PODFILE CHECKSUM: 0c2dd67ec4716bec9b0a29a3e2fa8a277df1fa59
+PODFILE CHECKSUM: d177d382aee05ea43ceeeb9ee810ed0348d9a6a7
 
 COCOAPODS: 1.11.2
