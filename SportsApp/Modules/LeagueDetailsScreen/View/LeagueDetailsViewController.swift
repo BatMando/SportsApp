@@ -6,7 +6,7 @@
 //  Copyright © 2022 admin. All rights reserved.
 //
 import UIKit
-
+import Lottie
 class LeagueDetailsViewController: BaseViewController {
     
     // MARK: - IBOutlet
@@ -17,6 +17,7 @@ class LeagueDetailsViewController: BaseViewController {
     
     @IBOutlet weak var favouriteBtn: UIButton!
     
+    @IBOutlet weak var animation: UIView!
     // MARK: - Properties
     var leagueDetailsPresenter : LeagueDetailsPresenterProtocol!
     var favouriteStatus = false
@@ -70,9 +71,9 @@ class LeagueDetailsViewController: BaseViewController {
         
         let teamNib = UINib(nibName: String(describing: TeamCollectionViewCell.self), bundle: nil)
         teamsCollectionView.register(teamNib, forCellWithReuseIdentifier: String(describing: TeamCollectionViewCell.self) )
-
+        
     }
-
+    
     // MARK: - IBActions
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
@@ -82,11 +83,32 @@ class LeagueDetailsViewController: BaseViewController {
     
     @IBAction func favouriteButtonPressed(_ sender: UIButton) {
         print("favourites button pressed")
+        var animationView: AnimationView?
+        animationView = .init(name: "favourite-animation")
+        animationView!.frame = view.bounds
+        animationView!.contentMode = .scaleAspectFit
+        print(animationView!.frame)
+
+        animationView!.loopMode = .playOnce
+        
+        animationView!.animationSpeed = 0.9
+    
+        view.addSubview(animationView!)
+        
         if favouriteStatus {
+            animationView!.loopMode = .repeatBackwards(0)
+            animationView!.play{(finished) in
+                animationView!.isHidden = true
+            }
             leagueDetailsPresenter.removeFromFavourites(id: leagueDetailsPresenter.getLeaugeID())
             changeFavouriteState()
         }
         else{
+            animationView!.loopMode = .playOnce
+            animationView!.play{(finished) in
+                animationView!.isHidden = true
+            }
+            
             leagueDetailsPresenter.addLeagueToFavourite()
             changeFavouriteState()
         }
@@ -139,7 +161,7 @@ extension LeagueDetailsViewController : UICollectionViewDataSource {
             let count = leagueDetailsPresenter.getUpcomingEventsCount()
             self.upcomingEventsCollectionView.backgroundView = count == 0 ? self.getHeaderView(width: Int(upcomingEventsCollectionView.frame.width)) : nil
             return count
-
+            
         }
     }
     
@@ -196,7 +218,7 @@ extension LeagueDetailsViewController:UICollectionViewDelegateFlowLayout {
             return CGSize(width: 160, height: teamsCollectionView.bounds.height)
         }else{
             return CGSize(width: self.view.bounds.width - 16 , height: upcomingEventsCollectionView.bounds.height)
-
+            
         }
     }
     
