@@ -62,4 +62,34 @@ class BaseViewController: UIViewController {
                return headerView
     }
     
+    
+    func openLink(url : String?){
+        guard let officialWebSite = url else{
+            //Toast(text: "Hello, world!", duration: Delay.long)
+        }
+        
+        guard let appURL = URL(string:"https://\(officialWebSite)") else {return}
+        if UIApplication.shared.canOpenURL(appURL as URL) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(appURL as URL, options:
+                                            [:], completionHandler: nil)
+            }
+            else { UIApplication.shared.openURL(appURL as URL)
+            }
+        }
+        else {
+            //redirect to safari because the user doesn't have
+            // Instagram
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(appURL as URL, options:
+                                            [:], completionHandler: nil)
+            }
+            else {UIApplication.shared.openURL(appURL as URL)
+            }
+        }
+        
+    }
+    
+    
+    
 }

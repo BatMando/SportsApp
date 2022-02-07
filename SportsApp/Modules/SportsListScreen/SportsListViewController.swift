@@ -18,12 +18,20 @@ class SportsListViewController: BaseViewController {
     //MARK: - Properties
     var isGridActive = false
     var presenter : SportsPresenter?
+    var refreshControl:UIRefreshControl!
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        refreshCollectionView()
         presenter = SportsListPresenter(view: self) //coupling
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        print("will appear")
     }
     
     //MARK: - Methodes
@@ -32,7 +40,23 @@ class SportsListViewController: BaseViewController {
         sportsCollectionView.register(nibCollectionViewCell, forCellWithReuseIdentifier: String(describing: SportsCollectionViewCell.self))
         sportsCollectionView.dataSource = self
         sportsCollectionView.delegate = self
+        //sportsCollectionView.alwaysBounceVertical = true
+        
     }
+    
+    func refreshCollectionView(){
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Refreshing...")
+        refreshControl.tintColor = UIColor.green
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        sportsCollectionView.addSubview(refreshControl)
+        
+    }
+    
+    @objc private func refresh(){
+        presenter?.getSports()
+    }
+    
     
     //MARK: - IBActions
     @IBAction func styleBtn(_ sender: Any) {
@@ -52,8 +76,14 @@ extension SportsListViewController: UICollectionViewDelegate{
 //MARK: - UICollectionViewDataSource
 extension SportsListViewController: UICollectionViewDataSource{
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter?.getSportsCount() ?? 0
+        let count = presenter?.getSportsCount() ?? 0
+        
+        self.sportsCollectionView.backgroundView = count == 0 ? self.getHeaderView(width: Int(sportsCollectionView.bounds.width)):nil
+        
+        return count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -74,12 +104,17 @@ extension SportsListViewController: UICollectionViewDelegateFlowLayout{
         return size
     }
 }
+
 extension SportsListViewController : presenterToViewDelegate {
     
-    
-    func reloadTableView() {
+    func reloadCollectionView() {
+        
         self.sportsCollectionView.reloadData()
+        if self.refreshControl.isRefreshing
+        {
+          self.refreshControl.endRefreshing()
+        }
+        
     }
-    
     
 }
