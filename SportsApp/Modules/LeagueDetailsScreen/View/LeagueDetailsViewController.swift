@@ -14,19 +14,24 @@ class LeagueDetailsViewController: BaseViewController {
     @IBOutlet weak var latestEventsTableView: SelfSizedTableView!
     @IBOutlet weak var upcomingEventsCollectionView: UICollectionView!
     @IBOutlet weak var LeagueTitleLabel: UILabel!
-    
     @IBOutlet weak var favouriteBtn: UIButton!
     
     @IBOutlet weak var animation: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     // MARK: - Properties
     var leagueDetailsPresenter : LeagueDetailsPresenterProtocol!
     var favouriteStatus = false
+    var refreshControl : UIRefreshControl!
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         configureCollectionViews()
+        refreshCollectionView()
+        scrollView.refreshControl = refreshControl
+        
     }
     
     // MARK: - Functions
@@ -74,6 +79,23 @@ class LeagueDetailsViewController: BaseViewController {
         
     }
     
+    func refreshCollectionView(){
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Refreshing...")
+        refreshControl.tintColor = UIColor.green
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        
+        scrollView.addSubview(refreshControl)
+        
+    }
+    
+    @objc private func refresh(){
+        leagueDetailsPresenter.getTeams()
+        leagueDetailsPresenter.getUpcomingEvents()
+        leagueDetailsPresenter.getLatestResults()
+        
+    }
+
     // MARK: - IBActions
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
@@ -242,17 +264,27 @@ extension LeagueDetailsViewController : LeagueDetailsViewControllerProtocol{
         //update UI To Red
     }
     
-    
-    
     func reloadUpcomingEventsCollectionView() {
         self.upcomingEventsCollectionView.reloadData()
+        if self.refreshControl.isRefreshing
+        {
+          self.refreshControl.endRefreshing()
+        }
     }
     
     func reloadLatestResultsTableView() {
         self.latestEventsTableView.reloadData()
+        if self.refreshControl.isRefreshing
+        {
+          self.refreshControl.endRefreshing()
+        }
     }
     
     func reloadTeamsCollectionView() {
         self.teamsCollectionView.reloadData()
+        if self.refreshControl.isRefreshing
+        {
+          self.refreshControl.endRefreshing()
+        }
     }
 }

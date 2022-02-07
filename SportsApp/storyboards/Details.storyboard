@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="o6l-uM-5kl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="o6l-uM-5kl">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -57,7 +55,6 @@
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="QSj-PP-675"/>
                         <color key="backgroundColor" name="MainBackground"/>
                         <constraints>
                             <constraint firstItem="D1u-99-y60" firstAttribute="trailing" secondItem="QSj-PP-675" secondAttribute="trailing" id="3h0-mA-RzR"/>
@@ -68,6 +65,7 @@
                             <constraint firstItem="D1u-99-y60" firstAttribute="leading" secondItem="QSj-PP-675" secondAttribute="leading" id="rWs-jZ-NbW"/>
                             <constraint firstItem="cWP-q4-YUs" firstAttribute="leading" secondItem="QSj-PP-675" secondAttribute="leading" id="txL-L7-Tiz"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="QSj-PP-675"/>
                     </view>
                     <connections>
                         <outlet property="leaguesTableView" destination="cWP-q4-YUs" id="1b7-QH-8zG"/>
@@ -157,7 +155,7 @@
                                                         <rect key="frame" x="0.0" y="52" width="414" height="250"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoming events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uiZ-cd-BtY">
-                                                                <rect key="frame" x="8" y="8" width="157.5" height="24"/>
+                                                                <rect key="frame" x="8" y="8" width="157" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                                 <color key="textColor" name="accentColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -189,7 +187,7 @@
                                                         <rect key="frame" x="0.0" y="310" width="414" height="210"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latest events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGu-iX-V9k">
-                                                                <rect key="frame" x="8" y="8" width="121" height="24"/>
+                                                                <rect key="frame" x="8" y="8" width="120.5" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                                 <color key="textColor" name="accentColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -214,7 +212,7 @@
                                                         <rect key="frame" x="0.0" y="528" width="414" height="210"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teams" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kD5-7l-fph">
-                                                                <rect key="frame" x="8" y="8" width="59" height="24"/>
+                                                                <rect key="frame" x="8" y="8" width="58.5" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                                 <color key="textColor" name="accentColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -265,7 +263,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="L4j-sr-iwo"/>
                         <color key="backgroundColor" name="MainBackground"/>
                         <constraints>
                             <constraint firstItem="gAU-CS-08g" firstAttribute="leading" secondItem="L4j-sr-iwo" secondAttribute="leading" id="9EI-O8-n7D"/>
@@ -273,12 +270,14 @@
                             <constraint firstItem="L4j-sr-iwo" firstAttribute="bottom" secondItem="gAU-CS-08g" secondAttribute="bottom" id="PZE-84-dPm"/>
                             <constraint firstItem="L4j-sr-iwo" firstAttribute="trailing" secondItem="gAU-CS-08g" secondAttribute="trailing" id="j1w-8i-BW5"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="L4j-sr-iwo"/>
                     </view>
                     <connections>
                         <outlet property="LeagueTitleLabel" destination="1dn-sZ-fA3" id="bQk-xM-AQ1"/>
                         <outlet property="animation" destination="jho-oL-tdf" id="gS8-QL-MdH"/>
                         <outlet property="favouriteBtn" destination="wVb-Is-GuH" id="wTq-WE-Mrf"/>
                         <outlet property="latestEventsTableView" destination="9BZ-DL-mcx" id="hJf-bn-QsE"/>
+                        <outlet property="scrollView" destination="aNX-Lz-JIg" id="uav-Ev-30o"/>
                         <outlet property="teamsCollectionView" destination="GC3-vl-cxD" id="Okg-jH-sXs"/>
                         <outlet property="upcomingEventsCollectionView" destination="wyZ-Xz-hy7" id="lcs-Gc-mcY"/>
                     </connections>
@@ -362,7 +361,6 @@
                                                                 </connections>
                                                             </button>
                                                         </subviews>
-                                                        <viewLayoutGuide key="safeArea" id="pTV-jX-OHI"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="hc0-uZ-ISq" firstAttribute="leading" secondItem="4dN-DF-MVQ" secondAttribute="leading" id="1Hy-vK-tIr"/>
@@ -370,9 +368,10 @@
                                                             <constraint firstItem="hc0-uZ-ISq" firstAttribute="top" secondItem="4dN-DF-MVQ" secondAttribute="top" id="bog-6b-KSO"/>
                                                             <constraint firstAttribute="bottom" secondItem="hc0-uZ-ISq" secondAttribute="bottom" id="dcY-P0-l5r"/>
                                                         </constraints>
+                                                        <viewLayoutGuide key="safeArea" id="pTV-jX-OHI"/>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstItem="GFu-8j-4ki" firstAttribute="top" secondItem="qW1-aN-CBa" secondAttribute="top" id="CWE-A9-Sl4"/>
                                                     <constraint firstItem="4dN-DF-MVQ" firstAttribute="leading" secondItem="qW1-aN-CBa" secondAttribute="leading" id="J7Y-Wl-NbC"/>
@@ -410,7 +409,7 @@
                                                         <rect key="frame" x="123" y="85" width="168" height="170"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home Kit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUX-QZ-a58">
-                                                        <rect key="frame" x="82" y="44" width="74.5" height="22"/>
+                                                        <rect key="frame" x="82" y="44" width="75" height="22"/>
                                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="18"/>
                                                         <color key="textColor" name="accentColor"/>
                                                         <nil key="highlightedColor"/>
@@ -436,10 +435,10 @@
                                                 <rect key="frame" x="0.0" y="600" width="414" height="200"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ER4-Cw-a2q">
-                                                        <rect key="frame" x="47" y="40" width="316" height="53"/>
+                                                        <rect key="frame" x="47" y="40" width="316" height="106"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CellitemBg" translatesAutoresizingMaskIntoConstraints="NO" id="NKf-z2-tfW">
-                                                                <rect key="frame" x="0.0" y="0.0" width="316" height="53"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="316" height="106"/>
                                                                 <color key="backgroundColor" name="bottomNavigation"/>
                                                                 <color key="tintColor" name="bottomNavigation"/>
                                                                 <userDefinedRuntimeAttributes>
@@ -449,7 +448,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xK-EM-9Bx">
-                                                                <rect key="frame" x="0.0" y="0.0" width="316" height="53"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="316" height="106"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                 <state key="normal" title="Official Website" image="gotoWebsite_ic-1">
@@ -478,13 +477,13 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="er2-yv-fln">
-                                                        <rect key="frame" x="47" y="109" width="316" height="41"/>
+                                                        <rect key="frame" x="47" y="162" width="316" height="82"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="mmX-SS-p3n">
-                                                                <rect key="frame" x="52" y="0.0" width="212" height="41"/>
+                                                                <rect key="frame" x="-30" y="0.0" width="376" height="82"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BCt-JF-HPz">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="41" height="41"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="82" height="82"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="BCt-JF-HPz" secondAttribute="height" multiplier="1:1" id="I5Z-zC-6ru"/>
                                                                         </constraints>
@@ -494,7 +493,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PfC-YX-AUp">
-                                                                        <rect key="frame" x="57" y="0.0" width="41" height="41"/>
+                                                                        <rect key="frame" x="98" y="0.0" width="82" height="82"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="PfC-YX-AUp" secondAttribute="height" multiplier="1:1" id="sSv-se-QbC"/>
                                                                         </constraints>
@@ -504,7 +503,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z75-MZ-yys">
-                                                                        <rect key="frame" x="114" y="0.0" width="41" height="41"/>
+                                                                        <rect key="frame" x="196" y="0.0" width="82" height="82"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="Z75-MZ-yys" secondAttribute="height" multiplier="1:1" id="LSe-Kz-UYj"/>
                                                                         </constraints>
@@ -514,7 +513,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8KL-sl-7ik">
-                                                                        <rect key="frame" x="171" y="0.0" width="41" height="41"/>
+                                                                        <rect key="frame" x="294" y="0.0" width="82" height="82"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="8KL-sl-7ik" secondAttribute="height" multiplier="1:1" id="oX4-3A-pVi"/>
                                                                         </constraints>
@@ -561,7 +560,6 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="Vn2-rc-2vl"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="tdk-xg-pK5" secondAttribute="bottom" id="GWr-Fq-8n9"/>
@@ -571,6 +569,7 @@
                             <constraint firstItem="4dN-DF-MVQ" firstAttribute="top" secondItem="Vn2-rc-2vl" secondAttribute="top" id="dJ2-3e-kXL"/>
                             <constraint firstItem="tdk-xg-pK5" firstAttribute="leading" secondItem="Vn2-rc-2vl" secondAttribute="leading" id="ljy-l3-xqa"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Vn2-rc-2vl"/>
                     </view>
                     <connections>
                         <outlet property="stadiumImageView" destination="GFu-8j-4ki" id="pdU-vn-5Kf"/>
@@ -608,8 +607,5 @@
         <namedColor name="bottomNavigation">
             <color red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
