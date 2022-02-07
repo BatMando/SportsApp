@@ -11,6 +11,7 @@
 		15FFB6A227AEF30900DC0FC0 /* LeagueDetailsViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFB6A127AEF30900DC0FC0 /* LeagueDetailsViewProtocol.swift */; };
 		15FFB6A527AEF3A000DC0FC0 /* LeagueDetailsPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFB6A427AEF3A000DC0FC0 /* LeagueDetailsPresenterProtocol.swift */; };
 		15FFB6A927AEFB3C00DC0FC0 /* TeamDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFB6A827AEFB3C00DC0FC0 /* TeamDetailsPresenter.swift */; };
+		5903D56D27B1B69000BDC61B /* favourite-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 5903D56C27B1B69000BDC61B /* favourite-animation.json */; };
 		590711A527A71E3F0061E6F6 /* LeaguesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590711A327A71E3F0061E6F6 /* LeaguesTableViewCell.swift */; };
 		590711A627A71E3F0061E6F6 /* LeaguesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 590711A427A71E3F0061E6F6 /* LeaguesTableViewCell.xib */; };
 		590711A927A7326C0061E6F6 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590711A827A7326C0061E6F6 /* UIImageView.swift */; };
@@ -71,6 +72,7 @@
 		15FFB6A127AEF30900DC0FC0 /* LeagueDetailsViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueDetailsViewProtocol.swift; sourceTree = "<group>"; };
 		15FFB6A427AEF3A000DC0FC0 /* LeagueDetailsPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueDetailsPresenterProtocol.swift; sourceTree = "<group>"; };
 		15FFB6A827AEFB3C00DC0FC0 /* TeamDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsPresenter.swift; sourceTree = "<group>"; };
+		5903D56C27B1B69000BDC61B /* favourite-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "favourite-animation.json"; sourceTree = "<group>"; };
 		590711A327A71E3F0061E6F6 /* LeaguesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesTableViewCell.swift; sourceTree = "<group>"; };
 		590711A427A71E3F0061E6F6 /* LeaguesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaguesTableViewCell.xib; sourceTree = "<group>"; };
 		590711A827A7326C0061E6F6 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
@@ -427,6 +429,7 @@
 		849F492527A6B51100C0321F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5903D56C27B1B69000BDC61B /* favourite-animation.json */,
 				849F492827A6B56100C0321F /* Xibs */,
 			);
 			path = View;
@@ -591,6 +594,7 @@
 				849F493127A6B5BD00C0321F /* TeamCollectionViewCell.xib in Resources */,
 				84725ED727A42E73008475DC /* Main.storyboard in Resources */,
 				15E0C53627A46F2A0065E876 /* Details.storyboard in Resources */,
+				5903D56D27B1B69000BDC61B /* favourite-animation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

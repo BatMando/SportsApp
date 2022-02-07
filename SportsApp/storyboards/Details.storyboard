@@ -112,6 +112,15 @@
                                                                     <action selector="backButtonPressed:" destination="mv3-eo-NU3" eventType="touchUpInside" id="PQ3-ap-VlX"/>
                                                                 </connections>
                                                             </button>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jho-oL-tdf">
+                                                                <rect key="frame" x="362" y="0.0" width="44" height="44"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="44" id="7Dl-1k-Neh"/>
+                                                                    <constraint firstAttribute="height" constant="44" id="wJl-ZX-qsh"/>
+                                                                </constraints>
+                                                            </view>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVb-Is-GuH">
                                                                 <rect key="frame" x="362" y="0.0" width="44" height="44"/>
                                                                 <constraints>
@@ -128,11 +137,14 @@
                                                         <constraints>
                                                             <constraint firstItem="wVb-Is-GuH" firstAttribute="leading" secondItem="1dn-sZ-fA3" secondAttribute="trailing" constant="4" id="5ch-Oa-8al"/>
                                                             <constraint firstItem="1dn-sZ-fA3" firstAttribute="leading" secondItem="znZ-du-Xu2" secondAttribute="trailing" constant="4" id="6R0-BZ-yjb"/>
+                                                            <constraint firstAttribute="bottom" secondItem="jho-oL-tdf" secondAttribute="bottom" id="AfF-TW-6wQ"/>
                                                             <constraint firstAttribute="trailing" secondItem="wVb-Is-GuH" secondAttribute="trailing" constant="8" id="C13-f4-LAh"/>
+                                                            <constraint firstItem="jho-oL-tdf" firstAttribute="top" secondItem="bd1-Zy-wlN" secondAttribute="top" id="HhD-rT-DW3"/>
                                                             <constraint firstItem="1dn-sZ-fA3" firstAttribute="top" secondItem="bd1-Zy-wlN" secondAttribute="top" id="VuP-Ok-3lQ"/>
                                                             <constraint firstAttribute="bottom" secondItem="wVb-Is-GuH" secondAttribute="bottom" id="XQ5-im-2UC"/>
                                                             <constraint firstItem="znZ-du-Xu2" firstAttribute="leading" secondItem="bd1-Zy-wlN" secondAttribute="leading" id="YOj-wu-o8V"/>
                                                             <constraint firstAttribute="height" constant="44" id="aoH-RW-u5T"/>
+                                                            <constraint firstAttribute="trailing" secondItem="jho-oL-tdf" secondAttribute="trailing" constant="8" id="ipy-vS-CVX"/>
                                                             <constraint firstAttribute="bottom" secondItem="znZ-du-Xu2" secondAttribute="bottom" id="l24-ka-alg"/>
                                                             <constraint firstItem="znZ-du-Xu2" firstAttribute="top" secondItem="bd1-Zy-wlN" secondAttribute="top" id="mTZ-NN-i5v"/>
                                                             <constraint firstItem="wVb-Is-GuH" firstAttribute="top" secondItem="bd1-Zy-wlN" secondAttribute="top" id="vYB-Me-931"/>
@@ -262,6 +274,7 @@
                     </view>
                     <connections>
                         <outlet property="LeagueTitleLabel" destination="1dn-sZ-fA3" id="bQk-xM-AQ1"/>
+                        <outlet property="animation" destination="jho-oL-tdf" id="gS8-QL-MdH"/>
                         <outlet property="favouriteBtn" destination="wVb-Is-GuH" id="wTq-WE-Mrf"/>
                         <outlet property="latestEventsTableView" destination="9BZ-DL-mcx" id="hJf-bn-QsE"/>
                         <outlet property="scrollView" destination="aNX-Lz-JIg" id="uav-Ev-30o"/>
