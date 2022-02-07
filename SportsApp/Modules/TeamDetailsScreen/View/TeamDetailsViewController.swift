@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class TeamDetailsViewController: UIViewController ,TeamDetailsViewControllerProtocol{
+class TeamDetailsViewController:  BaseViewController ,TeamDetailsViewControllerProtocol{
     // MARK: -IBOutlet
     @IBOutlet weak var stadiumImageView: UIImageView!
     @IBOutlet weak var teamNameLabell: UILabel!
@@ -60,31 +60,7 @@ class TeamDetailsViewController: UIViewController ,TeamDetailsViewControllerProt
         
         
     }
-    func openLink(url : String?){
-        guard let officialWebSite = url else{return}
-        
-        guard let appURL = URL(string:"https://\(officialWebSite)") else {return}
-        if UIApplication.shared.canOpenURL(appURL as URL) {
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(appURL as URL, options:
-                                            [:], completionHandler: nil)
-            }
-            else { UIApplication.shared.openURL(appURL as URL)
-            }
-        }
-        else {
-            //redirect to safari because the user doesn't have
-            // Instagram
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(appURL as URL, options:
-                                            [:], completionHandler: nil)
-            }
-            else {UIApplication.shared.openURL(appURL as URL)
-            }
-        }
-        
-        
-    }
+    
     
     // MARK: - IBAction
     @IBAction func backButtonPressed(_ sender: UIButton) {

@@ -8,4 +8,6 @@ target 'SportsApp' do
   # Pods for SportsApp
     pod 'Alamofire', '~> 4.9.1'
     pod 'Kingfisher', '~> 5.0'
+    pod 'Toast-Swift', '~> 5.0.1'
+    pod 'lottie-ios'
 end

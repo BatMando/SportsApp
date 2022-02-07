@@ -16,13 +16,14 @@ protocol SportsPresenter {
 }
 
 protocol presenterToViewDelegate : AnyObject{
-    func reloadTableView()
+    func reloadCollectionView()
 }
 
 class SportsListPresenter : SportsPresenter{
         
     var sports : [SportModel] = []
     weak var view : presenterToViewDelegate?
+    
     
     init(view : presenterToViewDelegate){
         self.view = view
@@ -36,7 +37,9 @@ class SportsListPresenter : SportsPresenter{
             case .success(let response):
                 print("aaa")
                 self?.sports = response.sports ?? []
-                self?.view?.reloadTableView()
+                DispatchQueue.main.async {
+                    self?.view?.reloadCollectionView()
+                }
             case .failure(let error):
                 print(error.localizedDescription)
             }
