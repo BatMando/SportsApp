@@ -15,32 +15,54 @@ class LeaguesListViewController: BaseViewController {
     @IBOutlet weak var leaguesTableView: UITableView!
     @IBOutlet weak var sportTilteLabel: UILabel!
     
-    
+    // MARK: - Properties
     var data : [LeagueModel] = []
     var presenter : LeaguesListViewPresenter?
+    var refreshControl:UIRefreshControl!
 //    let appearance = UINavigationBarAppearance()
+    
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI ()
         configureTableView()
+        refreshCollectionView()
         presenter?.setViewDelegate(delegate: self)
         presenter?.getLeagues()
     }
+    
     // MARK: - Methods
     private  func configureUI(){
         self.sportTilteLabel.text = presenter?.sportName
     }
+    
     func configureTableView () {
         self.leaguesTableView.register(UINib(nibName: String(describing: LeaguesTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: LeaguesTableViewCell.self))
         self.leaguesTableView.delegate = self
         self.leaguesTableView.dataSource = self
     }
+    
+    func refreshCollectionView(){
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Refreshing...")
+        refreshControl.tintColor = UIColor.green
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        leaguesTableView.addSubview(refreshControl)
+        
+    }
+    
+    @objc private func refresh(){
+        presenter?.getLeagues()
+    }
+    
+    
+    
     // MARK: - IBActions
     @IBAction func backButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
+    
 }
 // MARK: - Tableview delegate and datasource
 extension LeaguesListViewController : UITableViewDelegate,UITableViewDataSource{
@@ -73,6 +95,10 @@ extension LeaguesListViewController :LeaguesListViewPresenterDelegate{
     
     func renderTableView() {
         self.leaguesTableView.reloadData()
+        if self.refreshControl.isRefreshing
+        {
+          self.refreshControl.endRefreshing()
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
