@@ -10,4 +10,5 @@ target 'SportsApp' do
     pod 'Kingfisher', '~> 5.0'
     pod 'Toast-Swift', '~> 5.0.1'
     pod 'lottie-ios'
+    pod 'Toaster'
 end
