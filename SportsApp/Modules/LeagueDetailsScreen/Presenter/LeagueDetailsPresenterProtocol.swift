@@ -18,7 +18,7 @@ protocol LeagueDetailsPresenterProtocol{
     func getLatestResultsCount() -> Int
     func addLeagueToFavourite()
     func checkIsFavourite() -> Bool
-    func removeFromFavourites(id : String)
+    func removeFromFavourites()
     func getLeaugeID () -> String
     func getTeams()
     func getTeamWithIndex(index:Int) -> TeamModel

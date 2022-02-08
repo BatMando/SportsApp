@@ -8,36 +8,31 @@
 import Foundation
 import CoreData
 class LeagueDetailsPresenter :LeagueDetailsPresenterProtocol{
-    
-    
-    
-    
-    
     //MARK: - Properties
     var league: LeagueModel
     var teams : [TeamModel]?
     var upcomingEvents : [EventModel]?
     var latestResults : [EventModel]?
-    
     weak var LeagueDetailsView:LeagueDetailsViewControllerProtocol!
     
+    //MARK: - Life Cycle
     init(LeagueDetailsView:LeagueDetailsViewControllerProtocol, league : LeagueModel){
-        
         self.LeagueDetailsView = LeagueDetailsView
         self.league = league
         getTeams()
         getUpcomingEvents()
         getLatestResults()
-        
     }
     
     //MARK: - Functions
     func getLeagueName() -> String {
         return league.strLeague ?? ""
     }
+    
     func getLeaugeID () -> String {
         return league.idLeague ?? ""
     }
+    
     func checkIsFavourite() -> Bool{
         if DataManager.checkFavouriteStateForLeague(withID: league.idLeague ?? "") {
               return true
@@ -53,12 +48,9 @@ class LeagueDetailsPresenter :LeagueDetailsPresenterProtocol{
             switch result {
             case .success(let response):
                 self?.upcomingEvents = response.event
-                //              self?.delegate?.presentLeagues(data: leagues)
                 DispatchQueue.main.async {
-                    //                  self?.delegate?.renderTableView()
                     self?.LeagueDetailsView.reloadUpcomingEventsCollectionView()
                 }
-            //              print(response.leagues.count)
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -76,10 +68,12 @@ class LeagueDetailsPresenter :LeagueDetailsPresenterProtocol{
         newleague.strYoutube = league.strYoutube
         DataManager.saveContext()
         LeagueDetailsView.didAddedToFavouriteSuccessfully()
-        
     }
-    func removeFromFavourites(id : String){
+    
+    func removeFromFavourites(){
+        guard let id = league.idLeague else {return}
         DataManager.deleteLeague(withID: id)
+        LeagueDetailsView.didRemoveFromFavouriteSuccessfully()
     }
     
     func getUpcomingEventWithIndex(index: Int) -> EventModel {
@@ -98,12 +92,9 @@ class LeagueDetailsPresenter :LeagueDetailsPresenterProtocol{
             switch result {
             case .success(let response):
                 self?.latestResults = response.event
-                //              self?.delegate?.presentLeagues(data: leagues)
                 DispatchQueue.main.async {
-                    //                  self?.delegate?.renderTableView()
                     self?.LeagueDetailsView.reloadLatestResultsTableView()
                 }
-            //print(self?.latestResults?.count)
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -127,15 +118,11 @@ class LeagueDetailsPresenter :LeagueDetailsPresenterProtocol{
                 
             case .success(let response):
                 self?.teams = response.teams
-                //self?.delegate?.presentLeagues(data: leagues)
                 DispatchQueue.main.async {
-                    //self?.delegate?.renderTableView()
                     self?.LeagueDetailsView.reloadTeamsCollectionView()
                 }
-            //print("******\(self?.teams?.count)")
             case .failure(let error):
                 print(error.localizedDescription)
-                
             }
         }
     }
@@ -148,4 +135,10 @@ class LeagueDetailsPresenter :LeagueDetailsPresenterProtocol{
         return self.teams?.count ?? 0
     }
     
+    func getCurrentDate() -> String {
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: date)
+    }
 }

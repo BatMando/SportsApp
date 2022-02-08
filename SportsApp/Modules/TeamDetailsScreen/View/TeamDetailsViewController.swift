@@ -20,6 +20,7 @@ class TeamDetailsViewController:  BaseViewController ,TeamDetailsViewControllerP
     // MARK: -Properties
     var teamDetailsPresenter : TeamDetailsPresenterProtocol!
     var team : TeamModel?
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,32 +36,22 @@ class TeamDetailsViewController:  BaseViewController ,TeamDetailsViewControllerP
         
         if team.strTeamBadge != nil {
             self.teamLogoImageView.kf.setImage(with: URL(string: team.strTeamBadge ?? "" ))
-        }
-        else {
+        }else{
             self.teamLogoImageView.image = UIImage(named: "logoPlaceHolder")
         }
         
-        
         if team.strTeamJersey != nil{
             self.teamGersyImageView.kf.setImage(with: URL(string: team.strTeamJersey ?? "" ))
-        }
-        else {
+        }else{
             self.teamGersyImageView.image = UIImage(named: "kitplaceHolder")
         }
         
-        
         if team.strStadiumThumb != nil {
             self.stadiumImageView.kf.setImage(with: URL(string: team.strStadiumThumb ?? "" ))
-            
-        }
-        else {
+        }else{
             self.stadiumImageView.image = UIImage(named: "stadiumPlaceHolder")
-            
         }
-        
-        
     }
-    
     
     // MARK: - IBAction
     @IBAction func backButtonPressed(_ sender: UIButton) {
@@ -69,10 +60,6 @@ class TeamDetailsViewController:  BaseViewController ,TeamDetailsViewControllerP
     
     @IBAction func navigateToOfficialWebsite(_ sender: UIButton) {
         openLink(url: team?.strWebsite)
-        
-        //        guard let officialWebSite = team?.strWebsite else{return}
-        //        if let url = URL(string: "https://\(officialWebSite)") {
-        //        UIApplication.shared.open(url)}
     }
     
     @IBAction func visitFacebookPage(_ sender: UIButton) {
@@ -85,7 +72,6 @@ class TeamDetailsViewController:  BaseViewController ,TeamDetailsViewControllerP
     
     @IBAction func visitInstagramPage(_ sender: UIButton) {
         openLink(url: team?.strInstagram)
-        
     }
     
     @IBAction func visitYoutubeChannel(_ sender: UIButton) {

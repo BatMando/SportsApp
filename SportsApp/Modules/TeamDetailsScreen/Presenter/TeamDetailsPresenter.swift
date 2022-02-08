@@ -9,16 +9,16 @@
 import Foundation
 
 class TeamDetailsPresenter:TeamDetailsPresenterProtocol{
-
-    
-    
+    //MARK: - Properties
     var viewController : TeamDetailsViewControllerProtocol
     var teamModel      : TeamModel
     
+    //MARK: - Life Cycle
     init(view :TeamDetailsViewControllerProtocol , teamModel : TeamModel) {
         self.viewController = view
         self.teamModel = teamModel
     }
+    //MARK: - Methods
     func getTeam() -> TeamModel {
         return teamModel
     }
