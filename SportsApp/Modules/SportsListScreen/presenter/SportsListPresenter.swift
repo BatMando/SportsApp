@@ -7,38 +7,25 @@
 //
 
 import Foundation
-
-
-protocol SportsPresenter {
-    func getSports()
-    func getSport(atIndex : IndexPath)->SportModel
-    func getSportsCount()->Int
-}
-
-protocol presenterToViewDelegate : AnyObject{
-    func reloadCollectionView()
-}
-
 class SportsListPresenter : SportsPresenter{
-        
+    //MARK: - properties
     var sports : [SportModel] = []
     weak var view : presenterToViewDelegate?
     
-    
+    //MARK: - Life Cycle
     init(view : presenterToViewDelegate){
         self.view = view
         getSports()
     }
     
-    
+    //MARK: - Methods
     func getSports(){
         NetworkManager().request(fromEndpoint: .allSports, httpMethod: .get,parameters: nil) { [weak self] (result:Result<GetAllSportsResponseModel, Error>) in
             switch result {
             case .success(let response):
-                print("aaa")
                 self?.sports = response.sports ?? []
                 DispatchQueue.main.async {
-                    self?.view?.reloadCollectionView()
+                    self?.view?.reloadDataInCollectionView()
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -53,9 +40,5 @@ class SportsListPresenter : SportsPresenter{
     func getSport(atIndex: IndexPath)->SportModel{
         return sports[atIndex.row]
     }
-    
-    
-    
-    
 }
 

@@ -9,8 +9,6 @@
 import UIKit
 
 class LeaguesListViewController: BaseViewController {
-    
-    
     // MARK: - IBOutlet
     @IBOutlet weak var leaguesTableView: UITableView!
     @IBOutlet weak var sportTilteLabel: UILabel!
@@ -19,9 +17,7 @@ class LeaguesListViewController: BaseViewController {
     var data : [LeagueModel] = []
     var presenter : LeaguesListViewPresenter?
     var refreshControl:UIRefreshControl!
-//    let appearance = UINavigationBarAppearance()
-    
-    
+        
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,26 +45,24 @@ class LeaguesListViewController: BaseViewController {
         refreshControl.tintColor = UIColor.init(named: "ourPurple")
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         leaguesTableView.addSubview(refreshControl)
-        
     }
     
     @objc private func refresh(){
         presenter?.getLeagues()
     }
-    
-    
-    
+
     // MARK: - IBActions
     @IBAction func backButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
-    
 }
+
 // MARK: - Tableview delegate and datasource
 extension LeaguesListViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.data.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: LeaguesTableViewCell.self), for: indexPath) as? LeaguesTableViewCell {
             cell.model = self.data[indexPath.row]
@@ -77,20 +71,20 @@ extension LeaguesListViewController : UITableViewDelegate,UITableViewDataSource{
         }
         return UITableViewCell()
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter?.navigateToLeagueDetailsViewController(league: data[indexPath.row])
     }
-    
 }
-// MARK: - League List View delegate
 
+// MARK: - League List View delegate
 extension LeaguesListViewController :LeaguesListViewPresenterDelegate{
     func presentLeagues(data: [LeagueModel]) {
         self.data=data.reversed()
-        
     }
     
     func renderTableView() {
@@ -103,12 +97,9 @@ extension LeaguesListViewController :LeaguesListViewPresenterDelegate{
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         self.getHeaderView(width:Int(tableView.frame.width))
-        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         self.data.count == 0 ? 200 : 0
     }
-    
 }
-
