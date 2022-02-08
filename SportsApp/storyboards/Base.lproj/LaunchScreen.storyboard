@@ -16,16 +16,28 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashBG" translatesAutoresizingMaskIntoConstraints="NO" id="f80-ww-Yaz">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="8Mv-5i-lWL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="f80-ww-Yaz" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailing" id="Oxa-C5-a94"/>
+                            <constraint firstItem="f80-ww-Yaz" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="QR7-bL-csI"/>
+                            <constraint firstAttribute="bottom" secondItem="f80-ww-Yaz" secondAttribute="bottom" id="hHm-Wt-X2Y"/>
+                            <constraint firstItem="f80-ww-Yaz" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="og8-z9-NoK"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
     <resources>
+        <image name="splashBG" width="390" height="844"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

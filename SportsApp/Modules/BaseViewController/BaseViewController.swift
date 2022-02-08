@@ -42,6 +42,7 @@ class BaseViewController: UIViewController {
         }
         
     }
+    
     func navigateToLeaguesViewController(withSportName : String){
         let leaguesViewController = Storyboards.details.instance.instantiateViewController(withIdentifier: String(describing: LeaguesListViewController.self)) as! LeaguesListViewController
         leaguesViewController.presenter = LeaguesListViewPresenter(sportName: withSportName)

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qbd-cD-DW6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hKv-YR-cNA">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -61,6 +63,7 @@
                                 <cells/>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Vi2-KZ-2Lo"/>
                         <color key="backgroundColor" name="MainBackground"/>
                         <constraints>
                             <constraint firstItem="gGo-a1-FI2" firstAttribute="top" secondItem="5ee-u0-m11" secondAttribute="bottom" constant="20" id="8P3-mA-QqP"/>
@@ -71,7 +74,6 @@
                             <constraint firstItem="Vi2-KZ-2Lo" firstAttribute="trailing" secondItem="5ee-u0-m11" secondAttribute="trailing" id="beA-cP-lYd"/>
                             <constraint firstItem="gGo-a1-FI2" firstAttribute="bottom" secondItem="Vi2-KZ-2Lo" secondAttribute="bottom" constant="10" id="kRS-jD-O7L"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Vi2-KZ-2Lo"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Sports" image="sports_ic" id="Dy2-ad-lIb"/>
                     <navigationItem key="navigationItem" title="Sports App" id="RPX-4r-1ju">
@@ -106,7 +108,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="VZP-IX-Dl3" secondAttribute="trailing" id="0Ci-Vt-ZcK"/>
                                     <constraint firstItem="VZP-IX-Dl3" firstAttribute="top" secondItem="akO-ef-Yik" secondAttribute="top" id="8iX-qH-eVw"/>
@@ -120,6 +122,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="YDU-BQ-m2d"/>
                         <color key="backgroundColor" name="MainBackground"/>
                         <constraints>
                             <constraint firstItem="bpx-ke-rYb" firstAttribute="bottom" secondItem="YDU-BQ-m2d" secondAttribute="bottom" id="04d-U1-LPI"/>
@@ -130,7 +133,6 @@
                             <constraint firstItem="bpx-ke-rYb" firstAttribute="top" secondItem="akO-ef-Yik" secondAttribute="bottom" constant="20" id="ecD-dp-hqf"/>
                             <constraint firstItem="YDU-BQ-m2d" firstAttribute="trailing" secondItem="akO-ef-Yik" secondAttribute="trailing" id="li8-9D-3BY"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="YDU-BQ-m2d"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Favourites" image="fav_ic_unfilled" id="alf-4P-SQ2"/>
                     <navigationItem key="navigationItem" title="Sports App" id="WQE-oz-UIF"/>
@@ -171,16 +173,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0qk-g4-T7g">
-                                <rect key="frame" x="-41" y="245" width="496" height="416.5"/>
+                                <rect key="frame" x="67" y="332" width="280.5" height="242"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6BT-eo-pNX">
-                                        <rect key="frame" x="16" y="16" width="464" height="384.5"/>
+                                        <rect key="frame" x="16" y="16" width="248.5" height="210"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noConnection" translatesAutoresizingMaskIntoConstraints="NO" id="ZZl-hw-gEd">
-                                                <rect key="frame" x="0.0" y="0.0" width="464" height="349"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="248.5" height="174.5"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Internet Connection !!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eu6-Ek-4zu">
-                                                <rect key="frame" x="0.0" y="357" width="464" height="27.5"/>
+                                                <rect key="frame" x="0.0" y="182.5" width="248.5" height="27.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                 <color key="textColor" name="accentColor"/>
                                                 <nil key="highlightedColor"/>
@@ -189,7 +191,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="6BT-eo-pNX" firstAttribute="top" secondItem="0qk-g4-T7g" secondAttribute="top" constant="16" id="2nb-Py-N9L"/>
                                     <constraint firstAttribute="bottom" secondItem="6BT-eo-pNX" secondAttribute="bottom" constant="16" id="fFn-X5-2so"/>
@@ -203,23 +205,63 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="0dQ-B4-P2h"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="0.60281999143835618" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="0qk-g4-T7g" firstAttribute="centerY" secondItem="0dQ-B4-P2h" secondAttribute="centerY" id="Jue-MB-2WC"/>
                             <constraint firstItem="0qk-g4-T7g" firstAttribute="centerX" secondItem="0dQ-B4-P2h" secondAttribute="centerX" id="zQT-wT-Wxe"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="0dQ-B4-P2h"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tmm-sH-GYS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="765" y="-76"/>
         </scene>
+        <!--Splash View Controller-->
+        <scene sceneID="dBi-hq-B5Y">
+            <objects>
+                <viewController storyboardIdentifier="SplashViewController" id="hKv-YR-cNA" customClass="SplashViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NRh-mI-7Ur">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="IMe-dF-Xrb">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoo" translatesAutoresizingMaskIntoConstraints="NO" id="55D-nZ-raf">
+                                <rect key="frame" x="87" y="384" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Qoa-RV-tlI"/>
+                                    <constraint firstAttribute="height" constant="128" id="Y5d-kh-WSP"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6yb-to-8H2"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="IMe-dF-Xrb" firstAttribute="trailing" secondItem="NRh-mI-7Ur" secondAttribute="trailing" id="M4Z-Jf-OaC"/>
+                            <constraint firstAttribute="bottom" secondItem="IMe-dF-Xrb" secondAttribute="bottom" id="Tvu-qu-SIG"/>
+                            <constraint firstItem="55D-nZ-raf" firstAttribute="centerX" secondItem="IMe-dF-Xrb" secondAttribute="centerX" id="ZnP-29-AGn"/>
+                            <constraint firstItem="IMe-dF-Xrb" firstAttribute="leading" secondItem="NRh-mI-7Ur" secondAttribute="leading" id="eEn-EL-taY"/>
+                            <constraint firstItem="55D-nZ-raf" firstAttribute="centerY" secondItem="IMe-dF-Xrb" secondAttribute="centerY" id="i4J-eS-jvd"/>
+                            <constraint firstItem="IMe-dF-Xrb" firstAttribute="top" secondItem="NRh-mI-7Ur" secondAttribute="top" id="pfh-P5-rif"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="animationVC" destination="IMe-dF-Xrb" id="Dpb-S0-zNd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ivx-uo-EPl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2544.9275362318845" y="-84.375"/>
+        </scene>
     </scenes>
     <resources>
         <image name="fav_ic_unfilled" width="29.5" height="28.5"/>
         <image name="gridview_ic" width="30" height="30"/>
         <image name="listview_ic" width="36" height="29.5"/>
+        <image name="logoo" width="106" height="114"/>
         <image name="noConnection" width="232" height="174.5"/>
         <image name="sports_ic" width="41" height="26"/>
         <namedColor name="MainBackground">
@@ -228,5 +270,8 @@
         <namedColor name="accentColor">
             <color red="0.023529411764705882" green="0.054901960784313725" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

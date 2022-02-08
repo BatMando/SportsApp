@@ -47,7 +47,7 @@ class SportsListViewController: BaseViewController {
     func refreshCollectionView(){
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Refreshing...")
-        refreshControl.tintColor = UIColor.green
+        refreshControl.tintColor = UIColor.init(named: "ourPurple")
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         sportsCollectionView.addSubview(refreshControl)
         
