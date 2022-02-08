@@ -66,7 +66,6 @@ class BaseViewController: UIViewController {
     
     
     func openLink(url : String?){
-        print(url)
         guard let officialWebSite = url,!url!.isEmpty else{
             let toast = Toast(text: "no link available! ", duration: Delay.short)
             toast.show()
