@@ -7,7 +7,20 @@
 		<key>SportsApp.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>4</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>59DCCA5F27B31B070026797B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>84725ECB27A42E73008475DC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
