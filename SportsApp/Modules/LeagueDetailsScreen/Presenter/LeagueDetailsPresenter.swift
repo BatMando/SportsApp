@@ -134,6 +134,10 @@ class LeagueDetailsPresenter :LeagueDetailsPresenterProtocol{
     func getTeamsCount() -> Int {
         return self.teams?.count ?? 0
     }
+    func getTeamLogoByName(name:String) -> String{
+        let copyTeams:[TeamModel]? = teams?.filter{$0.strTeam==name}
+        return copyTeams?[0].strTeamBadge ?? ""
+    }
     
     func getCurrentDate() -> String {
         let date = Date()

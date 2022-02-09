@@ -15,6 +15,9 @@ class UpcomingEventCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var eventDate: UILabel!
     @IBOutlet weak var homeTeamName: UILabel!
     @IBOutlet weak var awayTeamName: UILabel!
+    @IBOutlet weak var homeTeamLogo: UIImageView!
+    @IBOutlet weak var awayTeamLogo: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,6 +27,8 @@ class UpcomingEventCollectionViewCell: UICollectionViewCell {
             super.layoutSubviews()
             contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8))
         }
+    
+    
     func displayEventDate(date : String){
         self.eventDate.text = date
     }
@@ -47,5 +52,21 @@ class UpcomingEventCollectionViewCell: UICollectionViewCell {
     }
     func displayAwayTeamName(name : String){
         self.awayTeamName.text = name
+    }
+    
+    func displayHomeTeamLogo(imageUrl : String?){
+        guard let logoUrl = imageUrl,!imageUrl!.isEmpty else{
+            self.homeTeamLogo.image = UIImage(named: "logoPlaceHolder")
+            return
+        }
+        self.homeTeamLogo.kf.setImage(with: URL(string: logoUrl ))
+    }
+    
+    func displayAwayTeamLogo(imageUrl : String?){
+        guard let logoUrl = imageUrl,!imageUrl!.isEmpty else{
+            self.awayTeamLogo.image = UIImage(named: "logoPlaceHolder")
+            return
+        }
+        self.awayTeamLogo.kf.setImage(with: URL(string: logoUrl ))
     }
 }

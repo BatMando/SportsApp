@@ -170,9 +170,17 @@ extension LeagueDetailsViewController : UICollectionViewDataSource {
             let upComingEvent = leagueDetailsPresenter.getUpcomingEventWithIndex(index: indexPath.row)
             cell.displayEventDate(date: upComingEvent.dateEvent ?? "")
             cell.displayEventTime(time: upComingEvent.strTime ?? "")
-            cell.displayEventThumbnail(imageUrl: upComingEvent.strThumb ?? "")
             cell.displayHomeTeamName(name: upComingEvent.strHomeTeam ?? "")
             cell.displayAwayTeamName(name: upComingEvent.strAwayTeam ?? "")
+            cell.displayEventThumbnail(imageUrl: upComingEvent.strThumb ?? "")
+            print("@@@\(String(describing: upComingEvent.strThumb))")
+            print("@@@\(String(describing: upComingEvent.strHomeTeam))")
+            if upComingEvent.strThumb == nil || upComingEvent.strThumb!.isEmpty {
+                let homeTeamLogo = leagueDetailsPresenter.getTeamLogoByName(name:upComingEvent.strHomeTeam!)
+                let awayTeamLogo = leagueDetailsPresenter.getTeamLogoByName(name:upComingEvent.strAwayTeam!)
+                cell.displayHomeTeamLogo(imageUrl: homeTeamLogo)
+                cell.displayAwayTeamLogo(imageUrl: awayTeamLogo)
+            }
             return cell
         }
     }

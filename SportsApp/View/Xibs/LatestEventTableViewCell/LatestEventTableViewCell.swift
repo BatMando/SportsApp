@@ -9,10 +9,6 @@
 import UIKit
 
 class LatestEventTableViewCell: UITableViewCell {
-
-    
-    
-    
     @IBOutlet weak var eventThumbnail: UIImageView!
     @IBOutlet weak var eventDate: UILabel!
     @IBOutlet weak var eventTime: UILabel!
