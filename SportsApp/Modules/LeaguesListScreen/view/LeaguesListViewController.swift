@@ -24,6 +24,7 @@ class LeaguesListViewController: BaseViewController {
         configureUI ()
         configureTableView()
         refreshCollectionView()
+        activityIndicatorView.startAnimating()
         presenter?.setViewDelegate(delegate: self)
         presenter?.getLeagues()
     }
@@ -89,6 +90,7 @@ extension LeaguesListViewController :LeaguesListViewPresenterDelegate{
     
     func renderTableView() {
         self.leaguesTableView.reloadData()
+        activityIndicatorView.stopAnimating()
         if self.refreshControl.isRefreshing
         {
           self.refreshControl.endRefreshing()
@@ -100,6 +102,6 @@ extension LeaguesListViewController :LeaguesListViewPresenterDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        self.data.count == 0 ? 200 : 0
+        self.data.count == 0 && !hidePlaceHolder ? 200 : 0
     }
 }

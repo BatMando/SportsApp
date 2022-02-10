@@ -9,11 +9,21 @@
 import UIKit
 import Network
 import Toaster
+import NVActivityIndicatorView
 
 class BaseViewController: UIViewController {
     
+    var activityIndicatorView : NVActivityIndicatorView!
+    var hidePlaceHolder = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let frame = CGRect(x: (self.view.frame.width-50)/2, y: (self.view.frame.height-50)/2, width: 50, height: 50)
+
+        activityIndicatorView = NVActivityIndicatorView (frame:frame, type: .ballScaleRippleMultiple, color: UIColor.init(named: "ourPurple"), padding: nil)
+        self.view.addSubview(activityIndicatorView)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(displayNetworkAlert), name: Notification.Name.init(rawValue: "NotInternetConnection"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(hideNetworkAlert), name: Notification.Name.init(rawValue: "ConnectedToNetwork"), object: nil)

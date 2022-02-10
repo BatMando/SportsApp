@@ -22,7 +22,7 @@ class TeamCollectionViewCell: UICollectionViewCell {
     }
 
     func displayTeamLogo(imageUrl : String){
-        print(imageUrl)
+        //print(imageUrl)
         self.teamLogo.kf.setImage(with: URL(string: imageUrl ))
     }
 

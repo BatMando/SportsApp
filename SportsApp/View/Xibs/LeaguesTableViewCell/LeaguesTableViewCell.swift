@@ -13,7 +13,6 @@ class LeaguesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var leagueImage: UIImageView!
     @IBOutlet weak var leagueName: UILabel!
-    
     @IBOutlet weak var favouriteBtnImage: UIButton!
     
     var model : LeagueModel? {
