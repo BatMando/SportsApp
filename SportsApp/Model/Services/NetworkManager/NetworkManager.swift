@@ -29,7 +29,7 @@ class NetworkManager {
         request.httpMethod = httpMethod.rawValue
         
         Alamofire.request(url, method: httpMethod, parameters: parameters, encoding: URLEncoding(destination: .queryString), headers: nil).responseJSON { (response) in
-            
+            print(response.request)
             if let error = response.error {
                 completionOnMain(.failure(error))
                 return

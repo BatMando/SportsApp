@@ -66,7 +66,11 @@ extension LeaguesListViewController : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: LeaguesTableViewCell.self), for: indexPath) as? LeaguesTableViewCell {
-            cell.model = self.data[indexPath.row]
+            cell.displayLeagueName(name: data[indexPath.row].strLeague ?? "")
+            cell.displayCellImage(imageUrl: data[indexPath.row].strBadge ?? "")
+            cell.youtubeAction  = {[weak self] in
+                self?.openLink(url: self?.data[indexPath.row].strYoutube ?? "")
+            }
             cell.selectionStyle = .none
             return cell
         }

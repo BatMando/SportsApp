@@ -40,5 +40,27 @@ class SportsAppTests: XCTestCase {
         }
         waitForExpectations(timeout: 5, handler: nil)
     }
+    
+    func testLoadLeaguesFromURL() {
+          let expectaion = expectation(description: "waiting for the API")
+        networkManager.request(fromEndpoint: .allLeagues, parameters: ["c":"England" ,"s" : "Soccer"]){(result:Result<GetAllLeaguesResponseModel , Error>) in
+              switch result {
+              case .success(let response):
+                guard   response.countrys.count != 0 else {
+                      XCTFail()
+                      return
+                  }
+                  
+                  XCTAssertEqual(response.countrys.count , 10, "API Faild")
+                  expectaion.fulfill()
+              case .failure( _):
+                  XCTFail()
+              }
+              
+          }
+          waitForExpectations(timeout: 5, handler: nil)
+      }
+    
+    
 }
 

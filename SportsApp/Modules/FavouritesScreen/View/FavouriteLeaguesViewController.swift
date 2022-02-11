@@ -49,6 +49,9 @@ extension FavouriteLeaguesViewController : UITableViewDelegate,UITableViewDataSo
             if let league = presenter?.getItemAtIndex(index: indexPath.row) {
                 cell.displayLeagueName(name: league.strLeague ?? "")
                 cell.displayCellImage(imageUrl: league.strBadge ?? "")
+                cell.youtubeAction  = {[weak self] in
+                    self?.openLink(url: league.strYoutube ?? "")
+                }
             }
             cell.selectionStyle = .none
             return cell
@@ -88,7 +91,6 @@ extension FavouriteLeaguesViewController : UITableViewDelegate,UITableViewDataSo
             self.leaguesTableView.beginUpdates()
             DataManager.deleteLeague(withID: favouriteLeague?.idLeague ?? "")
             self.presenter.daleteItem(indexPath: indexPath)
-            //            self.leaguesTableView.reloadData()
             self.leaguesTableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
             self.leaguesTableView.endUpdates()
         }))
