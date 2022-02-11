@@ -44,15 +44,15 @@ class LeagueDetailsPresenter :LeagueDetailsPresenterProtocol{
         guard let leagueName = league.strLeague else {
             return
         }
-        NetworkManager().request(fromEndpoint: .events, httpMethod: .post,parameters: ["e":("\(leagueName)_2022-02-08")]) { [weak self](result:Result<GetAllUpComingEventsResponseModel, Error>) in
+        NetworkManager().request(fromEndpoint: .events, httpMethod: .post,parameters: ["e":("\(leagueName)_2022-03-19")]) { [weak self](result:Result<GetAllUpComingEventsResponseModel, Error>) in
             switch result {
             case .success(let response):
                 self?.upcomingEvents = response.event
                 DispatchQueue.main.async {
                     self?.LeagueDetailsView.reloadUpcomingEventsCollectionView()
                 }
-            case .failure(let error):
-                print(error.localizedDescription)
+            case .failure( _):
+                self?.LeagueDetailsView.reloadUpcomingEventsCollectionView()
             }
         }
     }
@@ -92,11 +92,10 @@ class LeagueDetailsPresenter :LeagueDetailsPresenterProtocol{
             switch result {
             case .success(let response):
                 self?.latestResults = response.event
-                DispatchQueue.main.async {
                     self?.LeagueDetailsView.reloadLatestResultsTableView()
-                }
             case .failure(let error):
                 print(error.localizedDescription)
+               self?.LeagueDetailsView.reloadLatestResultsTableView()
             }
         }
     }

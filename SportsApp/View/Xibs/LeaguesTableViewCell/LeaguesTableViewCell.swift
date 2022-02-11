@@ -10,22 +10,12 @@ import UIKit
 import Toaster
 
 class LeaguesTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var leagueImage: UIImageView!
     @IBOutlet weak var leagueName: UILabel!
     @IBOutlet weak var favouriteBtnImage: UIButton!
-    
-    var model : LeagueModel? {
-        didSet{
-            guard let model = model else {
-                return
-            }
-            self.leagueName.text = model.strLeague
-//            self.leagueImage.setImage("youtube_icn", forState: UIControlState.Normal)
-    
-            self.leagueImage.kf.setImage(with: URL(string:model.strBadge ?? "" ))
-        }
-    }
+
+    var youtubeAction : (()->())?
     
     
     func displayLeagueName(name : String){
@@ -39,13 +29,10 @@ class LeaguesTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     override func layoutSubviews() {
@@ -54,40 +41,7 @@ class LeaguesTableViewCell: UITableViewCell {
     }
     
     @IBAction func pressFavouriteBtn(_ sender: UIButton) {
-        openLink(url: model?.strYoutube)
+        youtubeAction?()
     }
 }
 
-extension LeaguesTableViewCell{
-    func openLink(url : String?){
-        //print(url)
-        guard let officialWebSite = url,!url!.isEmpty else{
-            
-            let toast = Toast(text: "no link available!", duration: Delay.short)
-            toast.show()
-            
-            return
-        }
-        
-        guard let appURL = URL(string:"https://\(officialWebSite)") else {return}
-        if UIApplication.shared.canOpenURL(appURL as URL) {
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(appURL as URL, options:
-                                            [:], completionHandler: nil)
-            }
-            else { UIApplication.shared.openURL(appURL as URL)
-            }
-        }
-        else {
-            //redirect to safari because the user doesn't have
-            // Instagram
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(appURL as URL, options:
-                                            [:], completionHandler: nil)
-            }
-            else {UIApplication.shared.openURL(appURL as URL)
-            }
-        }
-        
-    }
-}

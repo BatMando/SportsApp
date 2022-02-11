@@ -20,7 +20,9 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
         playSplashAnimation()
     }
-    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+          return .lightContent
+    }
     //MARK: - Functions
     private func playSplashAnimation(){
         animationView = .init(name: "splash-background")

@@ -132,7 +132,7 @@ extension LeagueDetailsViewController : UITableViewDataSource {
         cell.displayEventResult(result: "\(latestEvent.intHomeScore ?? " ") - \(latestEvent.intAwayScore ?? " ")")
         cell.displayHomeTeamName(name: latestEvent.strHomeTeam ?? "")
         cell.displayAwayTeamName(name: latestEvent.strAwayTeam ?? "")
-        
+        cell.selectionStyle = .none
         guard let strThumb = latestEvent.strThumb , !strThumb.isEmpty else{
             let homeTeamLogo = leagueDetailsPresenter.getTeamLogoByName(name:latestEvent.strHomeTeam ?? "")
             let awayTeamLogo = leagueDetailsPresenter.getTeamLogoByName(name:latestEvent.strAwayTeam ?? "")
@@ -157,12 +157,12 @@ extension LeagueDetailsViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == teamsCollectionView {
             let count = leagueDetailsPresenter.getTeamsCount()
-            self.teamsCollectionView.backgroundView = count == 0 ? self.getHeaderView(width: Int(teamsCollectionView.frame.width)) : nil
+            self.teamsCollectionView.backgroundView = count == 0 && !hidePlaceHolder ? self.getHeaderView(width: Int(teamsCollectionView.frame.width)) : nil
             return count
         }else {
             
             let count = leagueDetailsPresenter.getUpcomingEventsCount()
-            self.upcomingEventsCollectionView.backgroundView = count == 0 ? self.getHeaderView(width: Int(upcomingEventsCollectionView.frame.width)) : nil
+            self.upcomingEventsCollectionView.backgroundView = count == 0 && !hidePlaceHolder ? self.getHeaderView(width: Int(upcomingEventsCollectionView.frame.width)) : nil
             return count
         }
     }
@@ -216,7 +216,7 @@ extension LeagueDetailsViewController:UICollectionViewDelegateFlowLayout {
         if collectionView == teamsCollectionView {
             return CGSize(width: 160, height: teamsCollectionView.bounds.height)
         }else{
-            return CGSize(width: self.view.bounds.width - 16 , height: upcomingEventsCollectionView.bounds.height)
+            return CGSize(width: self.view.bounds.width  , height: upcomingEventsCollectionView.bounds.height)
         }
     }
     
@@ -225,7 +225,7 @@ extension LeagueDetailsViewController:UICollectionViewDelegateFlowLayout {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        leagueDetailsPresenter.getTeamsCount() == 0 ? 200 : 0
+        leagueDetailsPresenter.getLatestResultsCount()  == 0  && !hidePlaceHolder ? 200 : 0
     }
 }
 
@@ -239,11 +239,14 @@ extension LeagueDetailsViewController : LeagueDetailsViewControllerProtocol{
     }
     
     func reloadUpcomingEventsCollectionView() {
+        hidePlaceHolder = false
         self.upcomingEventsCollectionView.reloadData()
         stopRefrshControl()
     }
     
     func reloadLatestResultsTableView() {
+        hidePlaceHolder = false
+        self.latestEventsTableView.layoutIfNeeded()
         self.latestEventsTableView.reloadData()
         activityIndicatorView.stopAnimating()
         stopRefrshControl()
