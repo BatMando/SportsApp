@@ -93,6 +93,7 @@ extension LeaguesListViewController :LeaguesListViewPresenterDelegate{
     }
     
     func renderTableView() {
+        hidePlaceHolder = false
         self.leaguesTableView.reloadData()
         activityIndicatorView.stopAnimating()
         if self.refreshControl.isRefreshing
