@@ -61,6 +61,25 @@ class SportsAppTests: XCTestCase {
           waitForExpectations(timeout: 5, handler: nil)
       }
     
+    func testLoadUpComingEventsFromURL() {
+        let expectaion = expectation(description: "waiting for the API")
+        networkManager.request(fromEndpoint: .events, parameters: ["e":("English_Premier_League_2022-03-19")]){(result:Result<GetAllUpComingEventsResponseModel , Error>) in
+            switch result {
+            case .success(let response):
+                guard  response.event.count != 0 else {
+                    XCTFail()
+                    return
+                }
+                
+                XCTAssertEqual(response.event.count , 7, "API Faild")
+                expectaion.fulfill()
+            case .failure( _):
+                XCTFail()
+            }
+            
+        }
+        waitForExpectations(timeout: 5, handler: nil)
+    }
     
 }
 
