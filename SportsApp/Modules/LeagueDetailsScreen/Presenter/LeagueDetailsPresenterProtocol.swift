@@ -23,4 +23,5 @@ protocol LeagueDetailsPresenterProtocol{
     func getTeams()
     func getTeamWithIndex(index:Int) -> TeamModel
     func getTeamsCount() -> Int
+    func getTeamLogoByName(name:String) -> String
 }

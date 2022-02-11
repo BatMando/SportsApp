@@ -28,6 +28,7 @@ class LeagueDetailsViewController: BaseViewController {
         super.viewDidLoad()
         configureUI()
         configureCollectionViews()
+        activityIndicatorView.startAnimating()
         refreshCollectionView()
     }
     
@@ -123,6 +124,7 @@ extension LeagueDetailsViewController : UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: LatestEventTableViewCell.self), for: indexPath) as! LatestEventTableViewCell
         let latestEvent = leagueDetailsPresenter.getLatestResultWithIndex(index: indexPath.row)
+        
         cell.displayEventThumbnail(imageUrl: latestEvent.strThumb ?? "")
         cell.displayEventTime(time: latestEvent.strTime ?? "")
         cell.displayEventDate(date: latestEvent.dateEvent ?? "")
@@ -130,6 +132,15 @@ extension LeagueDetailsViewController : UITableViewDataSource {
         cell.displayEventResult(result: "\(latestEvent.intHomeScore ?? " ") - \(latestEvent.intAwayScore ?? " ")")
         cell.displayHomeTeamName(name: latestEvent.strHomeTeam ?? "")
         cell.displayAwayTeamName(name: latestEvent.strAwayTeam ?? "")
+        
+        guard let strThumb = latestEvent.strThumb , !strThumb.isEmpty else{
+            let homeTeamLogo = leagueDetailsPresenter.getTeamLogoByName(name:latestEvent.strHomeTeam ?? "")
+            let awayTeamLogo = leagueDetailsPresenter.getTeamLogoByName(name:latestEvent.strAwayTeam ?? "")
+            cell.displayHomeTeamLogo(imageUrl: homeTeamLogo)
+            cell.displayAwayTeamLogo(imageUrl: awayTeamLogo)
+            return cell
+        }
+        
         return cell
     }
 }
@@ -170,9 +181,19 @@ extension LeagueDetailsViewController : UICollectionViewDataSource {
             let upComingEvent = leagueDetailsPresenter.getUpcomingEventWithIndex(index: indexPath.row)
             cell.displayEventDate(date: upComingEvent.dateEvent ?? "")
             cell.displayEventTime(time: upComingEvent.strTime ?? "")
-            cell.displayEventThumbnail(imageUrl: upComingEvent.strThumb ?? "")
             cell.displayHomeTeamName(name: upComingEvent.strHomeTeam ?? "")
             cell.displayAwayTeamName(name: upComingEvent.strAwayTeam ?? "")
+            cell.displayEventThumbnail(imageUrl: upComingEvent.strThumb ?? "")
+            //print("@@@\(String(describing: upComingEvent.strThumb))")
+            //print("@@@\(String(describing: upComingEvent.strHomeTeam))")
+            
+            guard let strThumb = upComingEvent.strThumb , !strThumb.isEmpty else{
+                let homeTeamLogo = leagueDetailsPresenter.getTeamLogoByName(name:upComingEvent.strHomeTeam ?? "")
+                let awayTeamLogo = leagueDetailsPresenter.getTeamLogoByName(name:upComingEvent.strAwayTeam ?? "")
+                cell.displayHomeTeamLogo(imageUrl: homeTeamLogo)
+                cell.displayAwayTeamLogo(imageUrl: awayTeamLogo)
+                return cell
+            }
             return cell
         }
     }
@@ -224,11 +245,13 @@ extension LeagueDetailsViewController : LeagueDetailsViewControllerProtocol{
     
     func reloadLatestResultsTableView() {
         self.latestEventsTableView.reloadData()
+        activityIndicatorView.stopAnimating()
         stopRefrshControl()
     }
     
     func reloadTeamsCollectionView() {
         self.teamsCollectionView.reloadData()
+        activityIndicatorView.stopAnimating()
         stopRefrshControl()
     }
     

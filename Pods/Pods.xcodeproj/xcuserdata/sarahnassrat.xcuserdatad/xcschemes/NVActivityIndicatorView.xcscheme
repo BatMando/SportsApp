@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B990BD87169C76A3ED3FE8A9258D91A3"
-               BuildableName = "Toast_Swift.framework"
-               BlueprintName = "Toast-Swift"
+               BlueprintIdentifier = "AF8A82876C43F4DFD625D1823E680EAC"
+               BuildableName = "NVActivityIndicatorView.framework"
+               BlueprintName = "NVActivityIndicatorView"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

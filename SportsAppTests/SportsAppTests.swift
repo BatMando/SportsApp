@@ -33,7 +33,7 @@ class SportsAppTests: XCTestCase {
                 
                 XCTAssertEqual(count , 34, "API Faild")
                 expectaion.fulfill()
-            case .failure(let _):
+            case .failure( _):
                 XCTFail()
             }
             

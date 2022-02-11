@@ -20,11 +20,14 @@ class SportsListViewController: BaseViewController {
     var presenter : SportsPresenter?
     var refreshControl:UIRefreshControl!
     
+    
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
         refreshCollectionView()
+        activityIndicatorView.startAnimating()
+        
         presenter = SportsListPresenter(view: self)
     }
     
@@ -65,7 +68,7 @@ extension SportsListViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let count = presenter?.getSportsCount() ?? 0
-        self.sportsCollectionView.backgroundView = count == 0 ? self.getHeaderView(width: Int(sportsCollectionView.bounds.width)):nil
+        self.sportsCollectionView.backgroundView = count == 0 && !hidePlaceHolder ? self.getHeaderView(width: Int(sportsCollectionView.bounds.width)):nil
         return count
     }
     
@@ -92,6 +95,7 @@ extension SportsListViewController : presenterToViewDelegate {
     
     func reloadDataInCollectionView() {
         self.sportsCollectionView.reloadData()
+        activityIndicatorView.stopAnimating()
         if self.refreshControl.isRefreshing
         {
           self.refreshControl.endRefreshing()
