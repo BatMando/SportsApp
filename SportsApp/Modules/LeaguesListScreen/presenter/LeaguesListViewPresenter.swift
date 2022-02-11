@@ -34,6 +34,7 @@ class LeaguesListViewPresenter {
                     self?.delegate?.renderTableView()
                 }
             case .failure(let error):
+                self?.delegate?.renderTableView()
                 print(error.localizedDescription)
             }
         }
